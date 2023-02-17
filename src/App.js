@@ -1,12 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+//import logo from "./logo.svg";
+import Navigation from "./Navigation";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <Navigation></Navigation>
+      <h1 className="text-3xl text-white font-bold underline">Hello world!</h1>
     </div>
   );
 }
-
-export default App;
