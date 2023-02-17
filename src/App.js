@@ -1,12 +1,22 @@
-import "./App.css";
-//import logo from "./logo.svg";
-import Navigation from "./Navigation";
+import React from "react";
+import About from "./Components/About";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import Menus from "./Components/Menus";
+import Navbar from "./Components/Navbar";
+import OpeningHours from "./Components/OpeningHours";
+import ScrollToTop from "./Components/ScrollToTop";
 
 export default function App() {
   return (
-    <div className="App">
-      <Navigation></Navigation>
-      <h1 className="text-3xl text-white font-bold underline">Hello world!</h1>
-    </div>
+    <>
+      <ScrollToTop />
+      <Navbar />
+      <Header />
+      <About />
+      <Menus />
+      <OpeningHours />
+      <Footer />
+    </>
   );
 }
