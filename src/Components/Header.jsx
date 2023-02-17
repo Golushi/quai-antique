@@ -1,21 +1,23 @@
 
 export const Header = () => {
     return (
-        <nav id="header" className="bg-dark text-white">
-            <div className="w-full container mx-auto flex flex-wrap items-center justify-content-between mt-0 py-2">
-                <div className="logo-wrapper pl-4 flex items-center">
-                    <img src={"/"} alt="logo" />
-                </div>
-                <div className="nav-menu-wrapper flex items-center justify-between space-x-10">
-                    <div>Home</div>
-                    <div>A propos</div>
-                </div>
-                <div className="flex items-center justify-center space-x-4">
-                    <div>cart</div>
-                    <div>Log In</div>
-                    <div>Sign Up</div>
-                </div>
-            </div>
-        </nav>
+        <nav id="header" className="container flex justify-between px-4 py-8 mx-auto bg-black opacity-80">
+  <div>
+    <h3 className="text-2xl font-medium text-blue-500">LOGO</h3>
+  </div>
+  <div className="hidden space-x-8 lg:flex">
+    <a href="#">Menu 1</a>
+    <a href="#">Menu 2</a>
+    <a href="#">Menu 3</a>
+    <a href="#">Menu 4</a>
+  </div>
+  <div className="flex lg:hidden">
+    <div className="space-y-2">
+      <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
+      <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
+      <span className="block w-8 h-0.5 bg-white animate-pulse"></span>
+    </div>
+  </div>
+</nav>
     )
 }
