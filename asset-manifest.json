@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/quai-antique/static/css/main.c7e359ce.css",
-    "main.js": "/quai-antique/static/js/main.186f6176.js",
+    "main.css": "/quai-antique/static/css/main.a72099eb.css",
+    "main.js": "/quai-antique/static/js/main.d342a0b8.js",
     "static/js/787.f2a7d7df.chunk.js": "/quai-antique/static/js/787.f2a7d7df.chunk.js",
+    "static/media/blason_savoie.png": "/quai-antique/static/media/blason_savoie.4a450ddbbdc9fee360b2.png",
     "index.html": "/quai-antique/index.html",
-    "main.c7e359ce.css.map": "/quai-antique/static/css/main.c7e359ce.css.map",
-    "main.186f6176.js.map": "/quai-antique/static/js/main.186f6176.js.map",
+    "main.a72099eb.css.map": "/quai-antique/static/css/main.a72099eb.css.map",
+    "main.d342a0b8.js.map": "/quai-antique/static/js/main.d342a0b8.js.map",
     "787.f2a7d7df.chunk.js.map": "/quai-antique/static/js/787.f2a7d7df.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7e359ce.css",
-    "static/js/main.186f6176.js"
+    "static/css/main.a72099eb.css",
+    "static/js/main.d342a0b8.js"
   ]
 }
