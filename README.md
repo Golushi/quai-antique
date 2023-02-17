@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-Le site du restaurant est disponible en ligne ici : [Create React App](https://golushi.github.io/quai-antique/).
+Le site du restaurant est disponible en ligne ici : [Quai Antique](https://golushi.github.io/quai-antique/).
 
 ## Available Scripts
 
