@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Le site du restaurant est disponible en ligne ici : [Create React App](https://golushi.github.io/quai-antique/).
 
 ## Available Scripts
 
