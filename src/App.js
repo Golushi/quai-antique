@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import About from "./Components/About";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -9,7 +10,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 
 export default function App() {
   return (
-    <>
+    <div className="App">
       <ScrollToTop />
       <Navbar />
       <Header />
@@ -17,6 +18,6 @@ export default function App() {
       <Menus />
       <OpeningHours />
       <Footer />
-    </>
+    </div>
   );
 }
