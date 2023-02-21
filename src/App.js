@@ -7,17 +7,19 @@ import Menus from "./Components/Menus";
 import Navbar from "./Components/Navbar";
 import OpeningHours from "./Components/OpeningHours";
 import ScrollToTop from "./Components/ScrollToTop";
+import Reservation from "./Components/Reservation";
 
 export default function App() {
   return (
     <div className="App">
-      <ScrollToTop />
       <Navbar />
+      <Reservation />
       <Header />
       <About />
       <Menus />
       <OpeningHours />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

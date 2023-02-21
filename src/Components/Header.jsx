@@ -1,50 +1,59 @@
 import React from "react";
 import "tw-elements";
-//import name from '../Assets/Name/Name.png'
+import img1 from "../Assets/Gallery/gallery-img-1.jpg";
+import img2 from "../Assets/Gallery/gallery-img-2.jpg";
+import img3 from "../Assets/Gallery/gallery-img-3.jpg";
+import name from "../Assets/Name/Name.png";
 
 export default function Header() {
   return (
-    <div
-  id="carouselExampleSlidesOnly"
-  className="relative"
-  data-te-carousel-init
-  data-te-carousel-slide>
-  <div
-    className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-    <div
-      className="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item
-      data-te-carousel-active>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-        className="block w-full"
-        alt="Wild Landscape" />
-    </div>
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-        className="block w-full"
-        alt="Camera" />
-    </div>
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-        className="block w-full"
-        alt="Exotic Fruits" />
-    </div>
-  </div>
-</div>
-  
-    
-    
-    
-    
-    //<div>
-    //   <img src={name} className="z-10" alt="Name" />
-    //</div>
-  )
+    <header>
+      <div
+        id="carouselExampleSlidesOnly"
+        className="w-full h-screen"
+        data-te-carousel-init
+        data-te-carousel-slide
+      >
+        <div className="relative top-0 w-full h-screen overflow-hidden after:clear-both after:block after:content-['']">
+          <div
+            className="relative top-0 float-left -mr-[100%] w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-te-carousel-item
+            data-te-carousel-active
+          >
+            <img
+              src={img1}
+              className="block top-0 object-cover w-full h-screen"
+              alt="raclette"
+            />
+            <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
+          </div>
+          <div
+            className="relative top-0 float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-te-carousel-item
+          >
+            <img
+              src={img2}
+              className="block top-0 object-cover w-full h-screen"
+              alt="table"
+            />
+            <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
+          </div>
+          <div
+            className="relative top-0 float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-te-carousel-item
+          >
+            <img
+              src={img3}
+              className="block top-0 object-cover w-full h-screen"
+              alt="service à raclette"
+            />
+            <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
+          </div>
+        </div>
+        <div className="absolute top-1/3 flex flex-col">
+          <img src={name} className="z-8" alt="Name" />
+        </div>
+      </div>
+    </header>
+  );
 }
