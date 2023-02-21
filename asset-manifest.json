@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/quai-antique/static/css/main.779ea8ca.css",
-    "main.js": "/quai-antique/static/js/main.841d2c61.js",
+    "main.css": "/quai-antique/static/css/main.a410947c.css",
+    "main.js": "/quai-antique/static/js/main.b95e0b1e.js",
+    "static/media/gallery-img-1.jpg": "/quai-antique/static/media/gallery-img-1.989fcd31422e231f1d49.jpg",
+    "static/media/gallery-img-3.jpg": "/quai-antique/static/media/gallery-img-3.e383ba5722e417d4c544.jpg",
+    "static/media/gallery-img-2.jpg": "/quai-antique/static/media/gallery-img-2.5f56a33e1d6524cd9d4f.jpg",
     "static/media/blason_savoie.png": "/quai-antique/static/media/blason_savoie.4a450ddbbdc9fee360b2.png",
+    "static/media/Name.png": "/quai-antique/static/media/Name.10b8900539e3548bd3c5.png",
     "index.html": "/quai-antique/index.html",
-    "main.779ea8ca.css.map": "/quai-antique/static/css/main.779ea8ca.css.map",
-    "main.841d2c61.js.map": "/quai-antique/static/js/main.841d2c61.js.map"
+    "main.a410947c.css.map": "/quai-antique/static/css/main.a410947c.css.map",
+    "main.b95e0b1e.js.map": "/quai-antique/static/js/main.b95e0b1e.js.map"
   },
   "entrypoints": [
-    "static/css/main.779ea8ca.css",
-    "static/js/main.841d2c61.js"
+    "static/css/main.a410947c.css",
+    "static/js/main.b95e0b1e.js"
   ]
 }
