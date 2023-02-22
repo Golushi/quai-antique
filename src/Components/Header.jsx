@@ -10,10 +10,13 @@ export default function Header() {
     <header>
       <div
         id="carouselExampleSlidesOnly"
-        className="w-full h-screen"
+        className="w-full h-screen relative"
         data-te-carousel-init
         data-te-carousel-slide
       >
+        <div className="w-full h-full z-10 flex flex-col absolute justify-center items-center">
+          <img src={name} className="" alt="Name" />
+        </div>
         <div className="relative top-0 w-full h-screen overflow-hidden after:clear-both after:block after:content-['']">
           <div
             className="relative top-0 float-left -mr-[100%] w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
@@ -49,9 +52,6 @@ export default function Header() {
             />
             <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
           </div>
-        </div>
-        <div className="absolute top-1/3 flex flex-col">
-          <img src={name} className="z-8" alt="Name" />
         </div>
       </div>
     </header>

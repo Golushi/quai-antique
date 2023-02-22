@@ -50,7 +50,7 @@ export default function Navbar() {
                 <a href="/">Accueil</a>
               </li>
               <li className="hover:text-myyellow hover:underline">
-                <a href="about">A propos</a>
+                <a href="#about">A propos</a>
               </li>
               <li className="hover:text-myyellow hover:underline">
                 <a href="Carte">Carte</a>
