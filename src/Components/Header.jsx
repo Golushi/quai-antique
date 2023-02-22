@@ -28,7 +28,7 @@ export default function Header() {
               className="block top-0 object-cover w-full h-screen"
               alt="raclette"
             />
-            <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
+            <div className="bg-black/50 absolute top-0 left-0 w-full h-screen" />
           </div>
           <div
             className="relative top-0 float-left -mr-[100%] hidden w-full h-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"

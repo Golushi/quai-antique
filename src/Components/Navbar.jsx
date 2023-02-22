@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href={"/"}>
+            <a href={"#"}>
               <img src={logo} className="h-12 mr-3 sm:h-14" alt="Logo" />
             </a>
             <div className="md:hidden">
@@ -47,7 +47,7 @@ export default function Navbar() {
             <ul id={color ? 'text-burger-bg':'text-burger'}
              className="items-center justify-center space-y-8 md:flex md:space-x-8 md:space-y-0">
               <li className=" hover:text-myyellow hover:underline">
-                <a href="/">Accueil</a>
+                <a href="#">Accueil</a>
               </li>
               <li className="hover:text-myyellow hover:underline">
                 <a href="#about">A propos</a>
