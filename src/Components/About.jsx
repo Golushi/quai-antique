@@ -11,22 +11,22 @@ import g2img5 from "../Assets/Gallery2/gallery2-img-5.jpg";
 export default function About() {
   return (
     <section id="about" className="p-5 m-5 ">
-      <div className="">
-        <h1 className="p-2 font-bold text-2xl md:text-xl drop-shadow-2xl flex justify-center text-center">
+      <div className="p-5">
+        <h1 className="p-2 m-2 font-bold text-4xl drop-shadow-2xl flex justify-center text-center">
           Bienvenue dans notre restaurant
         </h1>
-        <p className="p-5 text-myyellow flex justify-center text-center">
+        <p className="p-5 m-5 italic text-myyellow flex justify-center text-center">
           Spécialités Savoyardes, fondues, raclettes, tartiflettes, pierrades...
         </p>
       </div>
-      <div className="max-w-[1200px] justify-items-center overflow-hidden m-auto grid lg:grid-cols-2 gap-4">
-        <div className="flex flex-col h-full text-center">
+      <div className="max-w-[1200px] m-5 justify-items-center justify-center overflow-hidden m-auto grid lg:grid-cols-2 gap-4">
+        <div className="flex lg:p-5 text-lg max-w-lg flex-col h-full text-center">
           <p className="p-5 text-align-justify">
             Dans un cadre chaleureux en plein coeur de Chambéry, ce coquet
             restaurant attire tous les amoureux d'une authentique gastronomie
             savoyarde élaborée avec de vrais produits du terroir.
           </p>
-          <p className="p-5 text-align-justify">
+          <p className="p-5 m-2 text-align-justify">
             Vous y dégusterez les spécialités incontournables, copieuses et
             raffinées ainsi que nos créations maisons.
           </p>
@@ -37,7 +37,7 @@ export default function About() {
         </div>
         <div
           id="carouselExampleCrossfade"
-          className="relative overflow-hidden max-w-[400px]"
+          className="relative z-5 overflow-hidden md:w-[500px] sm:w-[400px] w-[300px]"
           data-te-carousel-init
           data-te-carousel-slide
         >
@@ -83,60 +83,60 @@ export default function About() {
               aria-label="Slide 5"
             ></button>
           </div>
-          <div className="relative w-[400px] overflow-hidden after:clear-both after:block after:content-['']">
+          <div className="relative md:w-[500px] sm:w-[400px] w-[300px] overflow-hidden after:clear-both after:block after:content-['']">
             <div
-              className="relative float-left -mr-[100%] w-[400px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+              className="relative float-left -mr-[100%] md:w-[500px] sm:w-[400px] w-[300px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-fade
               data-te-carousel-item
               data-te-carousel-active
             >
               <img
                 src={g2img1}
-                className="block w-[400px]"
+                className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="interieur restaurant"
               />
             </div>
             <div
-              className="relative float-left -mr-[100%] hidden w-[400px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+              className="relative float-left -mr-[100%] hidden md:w-[500px] sm:w-[400px] w-[300px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-fade
               data-te-carousel-item
             >
               <img
                 src={g2img2}
-                className="block w-[400px]"
+                className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="preparation raclette"
               />
             </div>
             <div
-              className="relative float-left -mr-[100%] hidden w-[400px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+              className="relative float-left -mr-[100%] hidden md:w-[500px] sm:w-[400px] w-[300px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-fade
               data-te-carousel-item
             >
               <img
                 src={g2img3}
-                className="block w-[400px]"
+                className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="fromages"
               />
             </div>
             <div
-              className="relative float-left -mr-[100%] hidden w-[400px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+              className="relative float-left -mr-[100%] hidden md:w-[500px] sm:w-[400px] w-[300px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-fade
               data-te-carousel-item
             >
               <img
                 src={g2img4}
-                className="block w-[400px]"
+                className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="raclette"
               />
             </div>
             <div
-              className="relative float-left -mr-[100%] hidden w-[400px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+              className="relative float-left -mr-[100%] hidden md:w-[500px] sm:w-[400px] w-[300px] !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-fade
               data-te-carousel-item
             >
               <img
                 src={g2img5}
-                className="block w-[400px]"
+                className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="fromage coulant"
               />
             </div>
