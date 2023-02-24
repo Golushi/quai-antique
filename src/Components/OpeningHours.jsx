@@ -3,7 +3,7 @@ import React from 'react'
 export default function OpeningHours() {
   return (
     <section id='horaires'>
-      <div className='w-2/3 min-w-[260px] md:w-[700px] h-screen flex-container m-auto'>
+      <div className='w-2/3 min-w-[260px] md:w-[700px] h-auto flex-container m-auto'>
         <div className=' grid my-10'>
           <h3 className='text-xl text-myblack justify-self-center'>Horaires</h3>
         </div>

@@ -10,7 +10,6 @@ export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
-  console.log(completion)
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false)
@@ -83,7 +82,7 @@ export default function Navbar() {
       </div>
       <span
       style={{ transform: `translateX(${completion - 100}%)` }}
-      className="absolute bg-myblue h-1 w-full bottom-0" />
+      className="absolute bg-myblue h-1 w-full bottom-0 m-auto" />
     </nav>
   );
 }
