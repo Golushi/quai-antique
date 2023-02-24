@@ -2,12 +2,15 @@ import React from "react";
 import "../App.css";
 import "tw-elements";
 import { useState } from "react";
+import useReadingProgress from "../hooks/useReadingProgress";
 import logo from "../Assets/Logo/blason_savoie.png";
 import { Spin as Hamburger } from "hamburger-react";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
+  const completion = useReadingProgress();
+  console.log(completion)
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false)
@@ -78,6 +81,9 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <span
+      style={{ transform: `translateX(${completion - 100}%)` }}
+      className="absolute bg-myblue h-1 w-full bottom-0" />
     </nav>
   );
 }
