@@ -14,6 +14,11 @@ module.exports = {
       mywhite: "#F5F5F5",
       myred: "#D51414",
     },
+    fontFamily: {
+      cabin: ["Cabin", "sans-serif"],
+      lf: ["Libre Franklin", "sans-serif"],
+      oswald: ["Oswald", "sans-serif"],
+    },
   },
   plugins: [require("flowbite/plugin"), require("tw-elements/dist/plugin")],
 };

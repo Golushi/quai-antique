@@ -5,9 +5,9 @@ export default function OpeningHours() {
     <section id='horaires'>
       <div className='w-2/3 min-w-[260px] md:w-[700px] h-auto flex-container m-auto'>
         <div className=' grid my-10'>
-          <h3 className='text-xl text-myblack justify-self-center'>Horaires</h3>
+          <h3 className='text-xl font-cabin text-myblack justify-self-center'>Horaires</h3>
         </div>
-        <div className='grid grid-cols-3'>
+        <div className='grid font-oswald grid-cols-3'>
           <div className='grid justify-items-start my-2'>
             <p className='text-myyellow h-20 items-center flex my-2'>Lundi</p>
             <p className='text-myyellow h-20 items-center flex my-2'>Mardi</p>

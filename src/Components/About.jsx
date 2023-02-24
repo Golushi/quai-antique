@@ -12,14 +12,14 @@ export default function About() {
   return (
     <section id="about" className="p-5 m-5 ">
       <div className="p-5">
-        <h1 className="p-2 m-2 font-bold text-4xl drop-shadow-2xl flex justify-center text-center">
+        <h1 className="p-2 m-2 font-cabin font-bold text-4xl drop-shadow-2xl flex justify-center text-center">
           Bienvenue dans notre restaurant
         </h1>
-        <p className="p-5 m-5 italic text-myyellow flex justify-center text-center">
+        <p className="p-5 m-5 font-oswald italic text-myyellow flex justify-center text-center">
           Spécialités Savoyardes, fondues, raclettes, tartiflettes, pierrades...
         </p>
       </div>
-      <div className="max-w-[1200px] m-5 justify-items-center justify-center overflow-hidden m-auto grid lg:grid-cols-2 gap-4">
+      <div className="max-w-[1200px] font-lf m-5 justify-items-center justify-center overflow-hidden m-auto grid lg:grid-cols-2 gap-4">
         <div className="flex lg:p-5 text-lg max-w-lg flex-col h-full text-center">
           <p className="p-5 text-align-justify">
             Dans un cadre chaleureux en plein coeur de Chambéry, ce coquet
@@ -37,13 +37,13 @@ export default function About() {
         </div>
         <div
           id="carouselExampleCrossfade"
-          className="relative z-5 overflow-hidden md:w-[500px] sm:w-[400px] w-[300px]"
+          className="relative z-5 md:w-[500px] sm:w-[400px] w-[300px]"
           data-te-carousel-init
           data-te-carousel-slide
           data-te-carousel-interval="2500"
         >
           <div
-            className="absolute justify-center inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none p-0"
+            className="absolute overflow-hidden justify-center inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex p-0"
             data-te-carousel-indicators
           >
             <button

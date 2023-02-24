@@ -3,7 +3,7 @@ import name from "../Assets/Name/Name.png";
 
 export default function Footer() {
   return (
-    <footer id='contact' className='bg-myblue z-10 w-screen h-auto grid grid-row-4 justify-center'>
+    <footer id='contact' className='bg-myblue z-10 font-oswald w-screen h-auto grid grid-row-4 justify-center'>
       <div className="w-[200px] h-[100px] m-auto flex flex-wrap justify-center items-center">
         <img src={name} className="" alt="Name" />
       </div>

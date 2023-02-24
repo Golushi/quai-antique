@@ -48,7 +48,7 @@ export default function Navbar() {
             }`}
           >
             <ul id={color ? 'text-burger-bg':'text-burger'}
-                className="items-center justify-center space-y-8 md:flex md:space-x-8 md:space-y-0">
+                className="items-center font-lf justify-center space-y-8 md:flex md:space-x-8 md:space-y-0">
               <li className="hover:text-myyellow hover:underline"
                 onClick={toggle}>
                 <a href="#carousel">Accueil</a>

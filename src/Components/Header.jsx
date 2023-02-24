@@ -10,12 +10,12 @@ export default function Header() {
     <header>
       <div
         id="carouselExampleSlidesOnly"
-        className="w-full h-screen relative"
+        className=" relative w-full h-screen"
         data-te-carousel-init
         data-te-carousel-slide
         data-te-carousel-interval="2500"
       >
-        <div className="w-full h-full z-10 flex flex-col absolute justify-center items-center">
+        <div className="absolute w-full h-full z-10 flex flex-col justify-center items-center">
           <img src={name} className="" alt="Name" />
         </div>
         <div className="relative top-0 w-full h-screen overflow-hidden after:clear-both after:block after:content-['']">
