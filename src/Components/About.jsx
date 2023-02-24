@@ -36,7 +36,7 @@ export default function About() {
           </p>
         </div>
         <div
-          id="carousel"
+          id="carouselExampleCrossfade"
           className="relative z-5 overflow-hidden md:w-[500px] sm:w-[400px] w-[300px]"
           data-te-carousel-init
           data-te-carousel-slide

@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header>
       <div
-        id="carousel"
+        id="carouselExampleSlidesOnly"
         className="w-full h-screen relative"
         data-te-carousel-init
         data-te-carousel-slide
