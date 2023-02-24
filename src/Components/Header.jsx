@@ -13,6 +13,7 @@ export default function Header() {
         className="w-full h-screen relative"
         data-te-carousel-init
         data-te-carousel-slide
+        data-te-carousel-interval="2500"
       >
         <div className="w-full h-full z-10 flex flex-col absolute justify-center items-center">
           <img src={name} className="" alt="Name" />

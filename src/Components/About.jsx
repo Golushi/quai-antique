@@ -36,10 +36,11 @@ export default function About() {
           </p>
         </div>
         <div
-          id="carouselExampleCrossfade"
+          id="carousel"
           className="relative z-5 overflow-hidden md:w-[500px] sm:w-[400px] w-[300px]"
           data-te-carousel-init
           data-te-carousel-slide
+          data-te-carousel-interval="2500"
         >
           <div
             className="absolute justify-center inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none p-0"

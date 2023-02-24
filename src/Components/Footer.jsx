@@ -8,7 +8,7 @@ export default function Footer() {
         <img src={name} className="" alt="Name" />
       </div>
       <div className='my-2 flex text-center justify-center'>
-        <p className='flex justify-center items-center text-mywhite'>Contactez-nous<br/>06 80 80 80 80<br />43 Rue de la République</p>
+        <p className='flex justify-center items-center text-mywhite'>Contactez-nous<br/>06 80 80 80 80<br />43 Rue de la République<br/>Chambéry</p>
       </div>
       <div className='my-2'>
         <p className='flex justify-center items-center text-mywhite'>Retrouvez-nous sur les réseaux sociaux!</p>
