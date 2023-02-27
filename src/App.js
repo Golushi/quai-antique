@@ -11,7 +11,7 @@ import Reservation from "./Components/Reservation";
 
 export default function App() {
   return (
-    <div className="App">
+    <div id="App" className="App">
       <Navbar />
       <Reservation />
       <Header />

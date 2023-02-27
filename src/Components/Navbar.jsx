@@ -14,10 +14,10 @@ export default function Navbar() {
   // Change nav color when scrolling
   const [color, setColor] = useState(false)
   const changeNav = () => {
-    if (window.scrollY >= 750) {
-        setColor(true)
+    if (window.scrollY >= 900) {
+        setColor(true);
     } else {
-        setColor(false)
+        setColor(false);
     }
   }
   window.addEventListener('scroll', changeNav)
@@ -27,16 +27,16 @@ export default function Navbar() {
       <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href={"#carousel"}>
+            <a href={"#App"}>
               <img src={logo} className="h-12 mr-3 sm:h-14" alt="Logo" />
             </a>
             <div className="md:hidden">
               <button 
                 id={color ? 'button-bg':'button'}
-                className="p-2 animate-pulse"
+                className="animate-pulse"
                 onClick={() => setNavbar(!navbar)}
               >
-                <Hamburger direction="right" />
+                <Hamburger toggled={navbar} toggle={setNavbar} direction="right" />
               </button>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function Navbar() {
                 className="items-center font-lf justify-center space-y-8 md:flex md:space-x-8 md:space-y-0">
               <li className="hover:text-myyellow hover:underline"
                 onClick={toggle}>
-                <a href="#carousel">Accueil</a>
+                <a href="#App">Accueil</a>
               </li>
               <li className="hover:text-myyellow hover:underline"
                 onClick={toggle}>
