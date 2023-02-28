@@ -1,25 +1,17 @@
 import React from "react";
 import "./App.css";
-import About from "./Components/About";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Menus from "./Components/Menus";
-import Navbar from "./Components/Navbar";
-import OpeningHours from "./Components/OpeningHours";
-import ScrollToTop from "./Components/ScrollToTop";
-import Reservation from "./Components/Reservation";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Carte from "./pages/Carte";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <div id="App" className="App">
-      <Navbar />
-      <Reservation />
-      <Header />
-      <About />
-      <Menus />
-      <OpeningHours />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <BrowserRouter id="App" className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Carte" element={<Carte />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

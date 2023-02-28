@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import "../App.css";
 
 export default function Menus() {
@@ -38,9 +39,12 @@ export default function Menus() {
                 </p>
           </div>
         </div>
-        <button className='border-2 border-myyellow text-myyellow hover:bg-myyellow hover:text-mywhite h-[50px] m-auto xs:w-[300px] bottom-0 flex text-center justify-center items-center'>
-          <h3 className='text-xl font-cabin'>Acces carte complete</h3>
-        </button>
+        
+          <button className='border-2 border-myyellow text-myyellow hover:bg-myyellow hover:text-mywhite h-[50px] m-auto xs:w-[300px] bottom-0 flex text-center justify-center items-center'>
+            <NavLink to="/Carte" target={'_blank'} className={(nav) => (nav.isActive ? "nav-active" : "")}>
+              <h3 className='text-xl font-cabin'>Acces carte complete</h3>
+            </NavLink>
+          </button>
       </div>
     </section>
   )

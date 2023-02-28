@@ -5,12 +5,13 @@ import { useState } from "react";
 import useReadingProgress from "../hooks/useReadingProgress";
 import logo from "../Assets/Logo/blason_savoie.png";
 import { Spin as Hamburger } from "hamburger-react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
-
+  
   // Change nav color when scrolling
   const [color, setColor] = useState(false)
   const changeNav = () => {
@@ -59,7 +60,8 @@ export default function Navbar() {
               </li>
               <li className="hover:text-myyellow hover:underline"
                 onClick={toggle}>
-                <a href="#Carte">Carte</a>
+                   <NavLink to="/Carte" target={'_blank'} className={(nav) => (nav.isActive ? "nav-active" : "")}>Carte</NavLink>
+                
               </li>
               <li className="hover:text-myyellow hover:underline"
                 onClick={toggle}>
@@ -73,9 +75,9 @@ export default function Navbar() {
                 onClick={toggle}>
                 <a href="#contact">Nous trouver</a>
               </li>
-              <li className="hover:text-myyellow hover:underline">
+                  <li className="hover:text-myyellow hover:underline">
                 <a href="#login">Se connecter</a>
-              </li>
+                  </li>
             </ul>
           </div>
         </div>
