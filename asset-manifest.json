@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quai-antique/static/css/main.56f88814.css",
-    "main.js": "/quai-antique/static/js/main.7ead75bc.js",
+    "main.js": "/quai-antique/static/js/main.c643e8ab.js",
     "static/media/gallery-img-1.jpg": "/quai-antique/static/media/gallery-img-1.989fcd31422e231f1d49.jpg",
     "static/media/gallery2-img-2.jpg": "/quai-antique/static/media/gallery2-img-2.5bb1f4e4d30cf69d60b5.jpg",
     "static/media/gallery2-img-4.jpg": "/quai-antique/static/media/gallery2-img-4.a408b7fc86f979e9fc5b.jpg",
@@ -14,10 +14,10 @@
     "static/media/Name.png": "/quai-antique/static/media/Name.10b8900539e3548bd3c5.png",
     "index.html": "/quai-antique/index.html",
     "main.56f88814.css.map": "/quai-antique/static/css/main.56f88814.css.map",
-    "main.7ead75bc.js.map": "/quai-antique/static/js/main.7ead75bc.js.map"
+    "main.c643e8ab.js.map": "/quai-antique/static/js/main.c643e8ab.js.map"
   },
   "entrypoints": [
     "static/css/main.56f88814.css",
-    "static/js/main.7ead75bc.js"
+    "static/js/main.c643e8ab.js"
   ]
 }
