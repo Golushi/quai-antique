@@ -93,12 +93,11 @@ const Modal = () => {
                           Enregistrer
                         </label>
                       </div>
-                      <a
-                        href="#"
+                      <button
                         className="text-sm text-blue-700 hover:underline dark:text-blue-500"
                       >
                         MDP oublié?
-                      </a>
+                      </button>
                     </div>
                     <button
                       className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
@@ -115,13 +114,12 @@ const Modal = () => {
                       Connexion
                     </button>
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                      Pas de compte?{" "}
-                      <a
-                        href="#"
+                      Pas de compte?{""}
+                      <button
                         className="text-blue-700 hover:underline dark:text-blue-500"
                       >
                         Creer un compte
-                      </a>
+                      </button>
                     </div>
                   </form>
                 </div>
