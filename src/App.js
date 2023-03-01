@@ -8,8 +8,8 @@ export default function App() {
   return (
     <BrowserRouter id="App" className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Carte" element={<Carte />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/Carte" element={<Carte />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
