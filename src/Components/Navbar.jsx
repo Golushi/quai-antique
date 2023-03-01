@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href={"#App"}>
+            <a href={"/"}>
               <img src={logo} className="h-12 mr-3 sm:h-14" alt="Logo" />
             </a>
             <div className="md:hidden">

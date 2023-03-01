@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Carte from "./pages/Carte";
-import Home from "./pages/Home";
+import Carte from "./pages/Carte.js";
+import Home from "./pages/Home.js";
 
 export default function App() {
   return (
