@@ -8,7 +8,9 @@ const Modal = () => {
         data-modal-target="authentication-modal"
         data-modal-toggle="authentication-modal"
         type="button"
-        onClick={() => {setShowModal(true);}}
+        onClick={() => {
+          setShowModal(true);
+        }}
       >
         Se connecter
       </button>
@@ -93,9 +95,7 @@ const Modal = () => {
                           Enregistrer
                         </label>
                       </div>
-                      <button
-                        className="text-sm text-blue-700 hover:underline dark:text-blue-500"
-                      >
+                      <button className="text-sm text-blue-700 hover:underline dark:text-blue-500">
                         MDP oublié?
                       </button>
                     </div>
@@ -115,9 +115,7 @@ const Modal = () => {
                     </button>
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                       Pas de compte?{""}
-                      <button
-                        className="text-blue-700 hover:underline dark:text-blue-500"
-                      >
+                      <button className="text-blue-700 hover:underline dark:text-blue-500">
                         Creer un compte
                       </button>
                     </div>

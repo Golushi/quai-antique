@@ -6,7 +6,7 @@ export default function Carte() {
   return (
     <div>
       Carte
-      <NavLink exact to="/quai-antique">
+      <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
         <button>Retour</button>
       </NavLink>
     </div>
