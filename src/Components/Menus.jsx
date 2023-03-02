@@ -6,7 +6,7 @@ export default function Menus() {
   return (
     <section id='Menus'>
       <div className='w-screen h-screen flex flex-col justify-center'>
-        <div className='border-2 border-myyellow h-[700px] m-auto w-3/4 md:w-[600px] top-5'>
+        <div className='border-2 border-myyellow h-auto m-auto w-3/4 md:w-[600px] top-5'>
           <div className='flex flex-col text-center justify-center items-center p-2'>
             <h3 className='text-myyellow font-cabin text-xl justify-center'>Menus "Le chalet"</h3>
               <p className='text-mywhite m-3 font-oswald text-sm justify-center italic'>1 entrée - 1 plat - 1 dessert 
