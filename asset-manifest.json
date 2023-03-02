@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/quai-antique/static/css/main.9796faa2.css",
-    "main.js": "/quai-antique/static/js/main.ac7ede0d.js",
+    "main.css": "/quai-antique/static/css/main.d415cc2f.css",
+    "main.js": "/quai-antique/static/js/main.24103f20.js",
     "static/media/gallery-img-1.jpg": "/quai-antique/static/media/gallery-img-1.989fcd31422e231f1d49.jpg",
     "static/media/gallery2-img-2.jpg": "/quai-antique/static/media/gallery2-img-2.5bb1f4e4d30cf69d60b5.jpg",
     "static/media/gallery2-img-4.jpg": "/quai-antique/static/media/gallery2-img-4.a408b7fc86f979e9fc5b.jpg",
     "static/media/gallery2-img-1.jpg": "/quai-antique/static/media/gallery2-img-1.1e16986ffe33fbeb91db.jpg",
     "static/media/gallery2-img-3.jpg": "/quai-antique/static/media/gallery2-img-3.5e9802ec063116b54c13.jpg",
     "static/media/gallery2-img-5.jpg": "/quai-antique/static/media/gallery2-img-5.b30c5cb6085a229b7c7a.jpg",
+    "static/media/jambon-cru.jpg": "/quai-antique/static/media/jambon-cru.510664e835418f05ab7c.jpg",
     "static/media/gallery-img-3.jpg": "/quai-antique/static/media/gallery-img-3.e383ba5722e417d4c544.jpg",
     "static/media/gallery-img-2.jpg": "/quai-antique/static/media/gallery-img-2.5f56a33e1d6524cd9d4f.jpg",
+    "static/media/raclette.jpg": "/quai-antique/static/media/raclette.2d547ec843282221c0dd.jpg",
     "static/media/blason_savoie.png": "/quai-antique/static/media/blason_savoie.4a450ddbbdc9fee360b2.png",
+    "static/media/tartiflette.jpg": "/quai-antique/static/media/tartiflette.dea8ad1b9cc3d30c8884.jpg",
     "static/media/Name.png": "/quai-antique/static/media/Name.10b8900539e3548bd3c5.png",
     "index.html": "/quai-antique/index.html",
-    "main.9796faa2.css.map": "/quai-antique/static/css/main.9796faa2.css.map",
-    "main.ac7ede0d.js.map": "/quai-antique/static/js/main.ac7ede0d.js.map"
+    "main.d415cc2f.css.map": "/quai-antique/static/css/main.d415cc2f.css.map",
+    "main.24103f20.js.map": "/quai-antique/static/js/main.24103f20.js.map"
   },
   "entrypoints": [
-    "static/css/main.9796faa2.css",
-    "static/js/main.ac7ede0d.js"
+    "static/css/main.d415cc2f.css",
+    "static/js/main.24103f20.js"
   ]
 }
