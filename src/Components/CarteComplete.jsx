@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import jambon from "../Assets/Carte/jambon-cru.jpg";
 import tartiflette from "../Assets/Carte/tartiflette.jpg"
+import raclette from "../Assets/Carte/raclette.jpg"
 
 export default function Carte() {
   return (
@@ -185,7 +186,7 @@ export default function Carte() {
           </p>
         </div>
         <img
-          src={tartiflette}
+          src={raclette}
           className="md:w-[800px] m-auto p-3"
           alt="raclette"
         />
