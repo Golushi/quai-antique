@@ -1,7 +1,41 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Modal = () => {
   const [showModal, setShowModal] = useState(false);
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    // Restriction case vide
+    if (
+      enteredEmail.trim().length === 0 ||
+      enteredPassword.trim().length === 0
+    ) {
+      return;
+    }
+
+    // Restriction email
+    const regExEmail = (value) => {
+      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+    };
+
+    if (!regExEmail(enteredEmail)) {
+      return;
+    }
+
+    console.log("text");
+    console.log(enteredEmail, enteredPassword);
+
+    // Vider les imputs
+    emailInputRef.current.value = "";
+    passwordInputRef.current.value = "";
+  };
+
   return (
     <>
       <button
@@ -41,7 +75,11 @@ const Modal = () => {
                   <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                     Connection
                   </h3>
-                  <form className="space-y-6" action="#">
+                  <form
+                    onSubmit={submitHandler}
+                    className="space-y-6"
+                    action="#"
+                  >
                     <div>
                       <label
                         htmlFor="email"
@@ -53,6 +91,7 @@ const Modal = () => {
                         type="email"
                         name="email"
                         id="email"
+                        ref={emailInputRef}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="nom@gmail.com"
                         required
@@ -69,6 +108,7 @@ const Modal = () => {
                         type="password"
                         name="password"
                         id="password"
+                        ref={passwordInputRef}
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         required
@@ -82,7 +122,6 @@ const Modal = () => {
                             type="checkbox"
                             value=""
                             className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                            required
                           />
                         </div>
                         <label
@@ -92,7 +131,10 @@ const Modal = () => {
                           Enregistrer
                         </label>
                       </div>
-                      <button className="text-sm text-blue-700 hover:underline dark:text-blue-500">
+                      <button
+                        onClick={() => {}}
+                        className="text-sm text-blue-700 hover:underline dark:text-blue-500"
+                      >
                         MDP oublié?
                       </button>
                     </div>
@@ -105,14 +147,17 @@ const Modal = () => {
                     </button>
                     <button
                       className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                      onClick={() => setShowModal(false)}
+                      type={"submit"}
+                      onClick={() => {}}
                     >
                       Connexion
                     </button>
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                       Pas de compte?{""}
-                      <button className="text-blue-700 hover:underline dark:text-blue-500">
+                      <button
+                        onClick={() => {}}
+                        className="text-blue-700 hover:underline dark:text-blue-500"
+                      >
                         Creer un compte
                       </button>
                     </div>
