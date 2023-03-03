@@ -7,7 +7,6 @@ import g2img3 from "../Assets/Gallery2/gallery2-img-3.jpg";
 import g2img4 from "../Assets/Gallery2/gallery2-img-4.jpg";
 import g2img5 from "../Assets/Gallery2/gallery2-img-5.jpg";
 
-
 export default function About() {
   return (
     <section id="about" className="p-5 m-5 ">

@@ -8,12 +8,10 @@ import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
 import Modal from "./modal";
 
-
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
-  
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false);

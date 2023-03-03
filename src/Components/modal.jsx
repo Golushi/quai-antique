@@ -1,9 +1,15 @@
 import React, { useRef, useState } from "react";
+import ErrorModal from "./UI/ErrorModal";
 
 const Modal = () => {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const [error, setError] = useState();
+  if (error) {
+  } else {
+  }
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -25,6 +31,10 @@ const Modal = () => {
     };
 
     if (!regExEmail(enteredEmail)) {
+      setError({
+        title: "Email invalide",
+        message: "Une erreur sur le format de l'email (il manque le .com/.fr)",
+      });
       return;
     }
 
@@ -34,6 +44,9 @@ const Modal = () => {
     // Vider les imputs
     emailInputRef.current.value = "";
     passwordInputRef.current.value = "";
+  };
+  const errorhandler = () => {
+    setError(null);
   };
 
   return (
@@ -75,6 +88,13 @@ const Modal = () => {
                   <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                     Connection
                   </h3>
+                  {error && (
+                    <ErrorModal
+                      title={error.title}
+                      message={error.message}
+                      onConfirm={errorhandler}
+                    />
+                  )}
                   <form
                     onSubmit={submitHandler}
                     className="space-y-6"
