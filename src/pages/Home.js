@@ -10,6 +10,7 @@ import ScrollToTop from "../Components/ScrollToTop";
 import Reservation from "../Components/Reservation";
 
 export default function Home() {
+  window.scrollTo(0, 0);
   return (
     <div id="App" className="App">
       <Navbar />

@@ -1,15 +1,17 @@
 import React from "react";
+import Map from "./Map";
 
 export default function OpeningHours() {
   return (
     <section id="horaires">
-      <div className="w-2/3 min-w-[260px] md:w-[700px] h-auto flex-container m-auto">
+      <div className="grid xl:grid-cols-2 justify-items-center items-center">
+      <div className="w-2/3 min-w-[260px] md:w-[500px] h-auto flex-container m-auto px-5">
         <div className=" grid my-10">
-          <h3 className="text-xl font-cabin text-myblack justify-self-center">
+          <h3 className="text-2xl font-cabin text-myblack justify-self-center">
             Horaires
           </h3>
         </div>
-        <div className="grid font-oswald grid-cols-3">
+        <div className="grid font-oswald grid-cols-2">
           <div className="grid justify-items-start my-2">
             <p className="text-myyellow h-20 items-center flex my-2">Lundi</p>
             <p className="text-myyellow h-20 items-center flex my-2">Mardi</p>
@@ -25,7 +27,7 @@ export default function OpeningHours() {
               Dimanche
             </p>
           </div>
-          <div className="my-2"></div>
+          
           <div className="grid justify-items-end text-sm my-2">
             <p className="text-myyellow h-20 items-center flex my-2">
               Midi 12:00-14:30
@@ -64,6 +66,8 @@ export default function OpeningHours() {
             </p>
           </div>
         </div>
+      </div>
+      <Map />
       </div>
     </section>
   );
