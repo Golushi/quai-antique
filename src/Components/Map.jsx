@@ -9,7 +9,7 @@ export default function Map() {
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
       title="Google Maps"
-      className='w-[300px] h-[225px] sm:w-[600px] sm:h-[450px] overflow-hidden'
+      className='w-[300px] h-[225px] sm:w-[600px] sm:h-[450px] overflow-hidden my-5'
     ></iframe>
   )
 }
