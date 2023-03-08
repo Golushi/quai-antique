@@ -6,9 +6,9 @@ import raclette from "../Assets/Carte/raclette.jpg";
 
 export default function Carte() {
   return (
-    <div className="w-screen h-screen bg-mywhite">
+    <div className="w-screen h-screen bg-white">
       <div className="flex justify-center items-center py-3 shadow-lg">
-        <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+        <NavLink to="/quai-antique" className={(nav) => (nav.isActive ? "nav-active" : "")}>
           <button
             className="text-mywhite bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded-2xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
             type="button"
