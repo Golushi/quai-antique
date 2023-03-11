@@ -6,7 +6,7 @@ export default function Scroll() {
   return (
     <div>
       <ScrollToTop
-        className="flex justify-center items-center"
+        className="flex justify-center transform duration-500 hover:scale-125 items-center"
         smooth
         color="#6F8695"
       />

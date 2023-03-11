@@ -33,7 +33,7 @@ export default function Navbar() {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href={"#App"}>
-              <img src={logo} className="h-12 mr-3 sm:h-14" alt="Logo" />
+              <img src={logo} className="h-12 mr-3 sm:h-14 transform duration-500 hover:scale-125" alt="Logo" />
             </a>
             <div className="md:hidden">
               <button
@@ -61,13 +61,13 @@ export default function Navbar() {
               className="items-center font-lf justify-center space-y-8 md:flex md:space-x-8 md:space-y-0"
             >
               <li
-                className="hover:text-myyellow hover:underline"
+                className="hover:text-myyellow flex justify-center transform duration-500 hover:scale-125 hover:underline"
                 onClick={toggle}
               >
                 <a href="#about">A propos</a>
               </li>
               <li
-                className="hover:text-myyellow hover:underline"
+                className="hover:text-myyellow flex justify-center transform duration-500 hover:scale-125 hover:underline"
                 onClick={toggle}
               >
                 <NavLink
@@ -78,19 +78,19 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li
-                className="hover:text-myyellow hover:underline"
+                className="hover:text-myyellow flex justify-center transform duration-500 hover:scale-125 hover:underline"
                 onClick={toggle}
               >
                 <a href="#Menus">Menus</a>
               </li>
               <li
-                className=" hover:text-myyellow hover:underline"
+                className=" hover:text-myyellow flex justify-center transform duration-500 hover:scale-125 hover:underline"
                 onClick={toggle}
               >
                 <a href="#horaires">Horaires</a>
               </li>
               <li
-                className="hover:text-myyellow hover:underline"
+                className="hover:text-myyellow flex justify-center transform duration-500 hover:scale-125 hover:underline"
                 onClick={toggle}
               >
                 <a href="#contact">Nous trouver</a>

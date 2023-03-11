@@ -53,6 +53,7 @@ const Modal = () => {
     <>
       <button
         type="button"
+        className="transform duration-500 hover:scale-125 hover:underline"
         onClick={() => {
           setShowModal(true);
         }}

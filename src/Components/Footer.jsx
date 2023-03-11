@@ -30,6 +30,7 @@ export default function Footer() {
         <a
           href="https://www.facebook.com/"
           role="button"
+          className="transform duration-500 hover:scale-125"
           target="_blank"
           rel="noreferrer"
         >
@@ -45,6 +46,7 @@ export default function Footer() {
         <a
           href="https://www.instagram.com/"
           role="button"
+          className="transform duration-500 hover:scale-125"
           target="_blank"
           rel="noreferrer"
         >
@@ -60,6 +62,7 @@ export default function Footer() {
         <a
           href="https://www.twitter.com"
           role="button"
+          className="transform duration-500 hover:scale-125"
           target="_blank"
           rel="noreferrer"
         >

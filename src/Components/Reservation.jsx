@@ -9,7 +9,7 @@ export default function Reservation() {
         <button
           type="button"
           onClick={() => setIsVisible(true)}
-          className="rounded-lg font-cabin py-1 px-2 bg-myred text-mywhite"
+          className="rounded-lg font-cabin py-1 px-2 bg-myred transform duration-500 hover:scale-125 text-mywhite"
         >
           Réserver
         </button>
