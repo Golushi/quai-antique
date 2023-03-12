@@ -26,7 +26,9 @@ const Modal = () => {
     }
 
     // Restriction email
+    
     const regExEmail = (value) => {
+      // eslint-disable-next-line
       return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
     };
 
