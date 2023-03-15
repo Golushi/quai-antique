@@ -1,4 +1,8 @@
 import React from "react";
+import Login from "./Login";
+import Signup from "./Signup";
+import ReservationTimePicker from "../hooks/ReservationTimepicker";
+
 
 export default function bookingModal({ open, onClose }) {
   if (!open) return null;
@@ -41,7 +45,7 @@ export default function bookingModal({ open, onClose }) {
                     name=""
                     id=""
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    placeholder=""
+                    placeholder="Entre 1 et 20"
                     required
                   />
                 </div>
@@ -50,26 +54,19 @@ export default function bookingModal({ open, onClose }) {
                     Date
                   </label>
                   <input
-                    type=""
-                    name=""
-                    id=""
+                    type="date"
+                    name="field1"
+                    id="field1"
                     placeholder=""
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="" className="block mb-2 text-sm text-mywhite">
+                  <label htmlFor="reservation-time" className="block mb-2 text-sm text-mywhite">
                     Heures
                   </label>
-                  <input
-                    type=""
-                    name=""
-                    id=""
-                    placeholder=""
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required
-                  />
+                  <ReservationTimePicker />
                 </div>
                 <div>
                   <label htmlFor="" className="block mb-2 text-sm text-mywhite">
@@ -92,12 +89,12 @@ export default function bookingModal({ open, onClose }) {
                   Valider
                 </button>
                 <div className="text-sm">
-                  <button
-                    //  onClick={() => {}}
-                    className="text-mywhite hover:underline"
-                  >
-                    Creer un compte
-                  </button>
+                <div className="text-mywhite hover:underline">
+                  <Signup />
+                  </div><br />
+                  <div className="text-mywhite hover:underline">
+                  <Login />
+                  </div>
                 </div>
               </form>
             </div>

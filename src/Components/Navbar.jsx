@@ -6,7 +6,7 @@ import useReadingProgress from "../hooks/useReadingProgress";
 import logo from "../Assets/Logo/blason_savoie.png";
 import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
-import Modal from "./modal";
+import Modal from "./Modal";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
