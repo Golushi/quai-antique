@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
+//import ReactDOM from "react-dom";
 import ErrorModal from "./UI/ErrorModal";
 import Signup from "./Signup";
 
 export default function Login() {
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -27,7 +28,7 @@ export default function Login() {
     }
 
     // Restriction email
-    
+
     const regExEmail = (value) => {
       // eslint-disable-next-line
       return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
@@ -137,7 +138,7 @@ export default function Login() {
                         required
                       />
                     </div>
-                    
+
                     <button
                       className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                       type="button"
@@ -148,7 +149,7 @@ export default function Login() {
                     <button
                       className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                       type={"submit"}
-                      onClick={() => {}}
+                      onClick={() => setShowModal(false)}
                     >
                       Connexion
                     </button>
@@ -166,5 +167,5 @@ export default function Login() {
         </>
       ) : null}
     </>
-  )
+  );
 }
