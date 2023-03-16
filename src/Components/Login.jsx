@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import ErrorModal from "./UI/ErrorModal";
 import Signup from "./Signup";
+import Spinner from "./UI/Spinner";
 
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
@@ -8,6 +9,7 @@ export default function Login() {
   const passwordInputRef = useRef();
 
   const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState();
   if (error) {
@@ -46,6 +48,9 @@ export default function Login() {
     console.log("text");
     console.log(enteredEmail, enteredPassword);
 
+    // Spinner loading
+    setIsLoading(true);
+
     // Se connecter, recup userId et token
     const url = "http://localhost:4000/api/authentification/login";
 
@@ -62,6 +67,9 @@ export default function Login() {
           },
         });
         const dataResponse = await response.json();
+        // loading terminé
+        setIsLoading(false);
+
         if (response.ok) {
           setData(dataResponse);
         } else {
@@ -69,12 +77,15 @@ export default function Login() {
             title: "Authentification Echec",
             message: dataResponse.error,
           });
+          const errorMessage = "authentification echec";
+          throw new Error(errorMessage);
         }
         console.log(response);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchHandler();
 
     // Vider les imputs
@@ -185,13 +196,17 @@ export default function Login() {
                     >
                       retour
                     </button>
-                    <button
-                      className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                      type={"submit"}
-                      // onClick={() => setShowModal(false)}
-                    >
-                      Connexion
-                    </button>
+                    {!isLoading && (
+                      <button
+                        className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        type={"submit"}
+                        // onClick={() => setShowModal(false)}
+                      >
+                        Connexion
+                      </button>
+                    )}
+                    {isLoading && <Spinner />}
+
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                       Pas de compte? {""}
                       <div className="text-blue-700 py-2 hover:underline dark:text-blue-500">
