@@ -1,12 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import ErrorModal from "./UI/ErrorModal";
 import Signup from "./Signup";
 import Spinner from "./UI/Spinner";
+import AuthContext from "../store/authContext";
 
 export default function Login() {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  // Utilisation context
+  const authCtx = useContext(AuthContext);
+  console.log(authCtx);
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -72,6 +77,7 @@ export default function Login() {
 
         if (response.ok) {
           setData(dataResponse);
+          authCtx.login(dataResponse.token, dataResponse.userId);
         } else {
           setError({
             title: "Authentification Echec",
@@ -80,7 +86,6 @@ export default function Login() {
           const errorMessage = "authentification echec";
           throw new Error(errorMessage);
         }
-        console.log(response);
       } catch (error) {
         console.log(error);
       }

@@ -14,7 +14,7 @@ export default function Navbar() {
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
 
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true);
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false);

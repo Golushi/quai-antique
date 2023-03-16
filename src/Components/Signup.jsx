@@ -88,13 +88,9 @@ export default function Signup() {
           throw new Error(errorMessage);
         }
 
-        console.log(response);
-
         // Gerer l'erreur compte existant
 
         if (dataResponse && dataResponse.error) {
-          console.log("je suis dans le if");
-          console.log(dataResponse.error.sqlMessage);
           setError({
             title: "Il y a un problème",
             message: dataResponse.error.sqlMessage,

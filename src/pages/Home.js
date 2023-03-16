@@ -8,6 +8,7 @@ import Navbar from "../Components/Navbar";
 import OpeningHours from "../Components/OpeningHours";
 import ScrollToTop from "../Components/ScrollToTop";
 import Reservation from "../Components/Reservation";
+import Test from "../Components/Test";
 
 export default function Home() {
   window.scrollTo(0, 0);
@@ -21,6 +22,7 @@ export default function Home() {
       <OpeningHours />
       <Footer />
       <ScrollToTop />
+      <Test />
     </div>
   );
 }
