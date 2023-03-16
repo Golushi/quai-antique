@@ -89,8 +89,8 @@ export default function Login() {
     fetchHandler();
 
     // Vider les imputs
-    // emailInputRef.current.value = "";
-    // passwordInputRef.current.value = "";
+    emailInputRef.current.value = "";
+    passwordInputRef.current.value = "";
   };
   const errorhandler = () => {
     setError(null);
@@ -156,15 +156,15 @@ export default function Login() {
                   >
                     <div>
                       <label
-                        htmlFor="email"
+                        htmlFor="email1"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Addresse email
                       </label>
                       <input
                         type="email"
-                        name="email"
-                        id="email"
+                        name="emailLogin"
+                        id="emailLogin"
                         ref={emailInputRef}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="nom@gmail.com"
@@ -173,15 +173,15 @@ export default function Login() {
                     </div>
                     <div>
                       <label
-                        htmlFor="password"
+                        htmlFor="password1"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Mot de passe
                       </label>
                       <input
                         type="password"
-                        name="password"
-                        id="password"
+                        name="passwordLogin"
+                        id="passwordLogin"
                         ref={passwordInputRef}
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -206,14 +206,13 @@ export default function Login() {
                       </button>
                     )}
                     {isLoading && <Spinner />}
-
-                    <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                      Pas de compte? {""}
-                      <div className="text-blue-700 py-2 hover:underline dark:text-blue-500">
-                        <Signup />
-                      </div>
-                    </div>
                   </form>
+                  <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                    Pas de compte? {""}
+                    <div className="text-blue-700 py-2 hover:underline dark:text-blue-500">
+                      <Signup />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

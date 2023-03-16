@@ -1,10 +1,16 @@
 import React, { useRef, useState } from "react";
 import ErrorModal from "./UI/ErrorModal";
+import Spinner from "./UI/Spinner";
 
 export default function Signup() {
   const [showModal, setShowModal] = useState(false);
+  const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const couvertsInputRef = useRef();
+
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState();
   if (error) {
@@ -14,13 +20,17 @@ export default function Signup() {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    const enteredCouverts = couvertsInputRef.current.value;
 
     // Restriction case vide
     if (
+      enteredName.trim().length === 0 ||
       enteredEmail.trim().length === 0 ||
-      enteredPassword.trim().length === 0
+      enteredPassword.trim().length === 0 ||
+      enteredCouverts.trim().length === 0
     ) {
       return;
     }
@@ -43,13 +53,70 @@ export default function Signup() {
     console.log("text");
     console.log(enteredEmail, enteredPassword);
 
+    // Spinner loading
+    setIsLoading(true);
+
+    // Se connecter, recup userId et token
+    const url = "http://localhost:4000/api/authentification/signup";
+
+    const fetchHandler = async () => {
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            nom: enteredName,
+            email: enteredEmail,
+            password: enteredPassword,
+            couverts: enteredCouverts,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const dataResponse = await response.json();
+        // loading terminé
+        setIsLoading(false);
+
+        if (response.ok) {
+          setData(dataResponse);
+        } else {
+          setError({
+            title: "Authentification Echec",
+            message: dataResponse.error,
+          });
+          const errorMessage = "authentification echec";
+          throw new Error(errorMessage);
+        }
+
+        console.log(response);
+
+        // Gerer l'erreur compte existant
+
+        if (dataResponse && dataResponse.error) {
+          console.log("je suis dans le if");
+          console.log(dataResponse.error.sqlMessage);
+          setError({
+            title: "Il y a un problème",
+            message: dataResponse.error.sqlMessage,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchHandler();
+
     // Vider les imputs
-    emailInputRef.current.value = "";
-    passwordInputRef.current.value = "";
+    // emailInputRef.current.value = "";
+    // passwordInputRef.current.value = "";
   };
   const errorhandler = () => {
     setError(null);
   };
+
+  console.log(data);
+
   return (
     <>
       <button
@@ -104,31 +171,30 @@ export default function Signup() {
                   >
                     <div>
                       <label
-                        htmlFor=""
+                        htmlFor="nom"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Nom
                       </label>
                       <input
-                        type="name"
-                        name="name"
-                        id="name"                        
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Nom"
+                        id="input1"
+                        ref={nameInputRef}
                         required
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="email"
+                        htmlFor="email2"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Addresse email
                       </label>
                       <input
                         type="email"
-                        name="email"
-                        id="email"
+                        name="emailSignup"
+                        id="emailSignup"
                         ref={emailInputRef}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="nom@gmail.com"
@@ -137,15 +203,15 @@ export default function Signup() {
                     </div>
                     <div>
                       <label
-                        htmlFor="password"
+                        htmlFor="password2"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Mot de passe
                       </label>
                       <input
                         type="password"
-                        name="password"
-                        id="password"
+                        name="passwordSignup"
+                        id="passwordSignup"
                         ref={passwordInputRef}
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -154,17 +220,16 @@ export default function Signup() {
                     </div>
                     <div>
                       <label
-                        htmlFor=""
+                        htmlFor="couvert"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Nbr couverts (par défaut)
                       </label>
                       <input
-                        type=""
-                        name=""
-                        id=""
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Entre 1 et 20"
+                        id="input2"
+                        ref={couvertsInputRef}
                         required
                       />
                     </div>
@@ -176,13 +241,16 @@ export default function Signup() {
                     >
                       retour
                     </button>
-                    <button
-                      className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                      type={"submit"}
-                      onClick={() => setShowModal(false)}
-                    >
-                      S'inscrire
-                    </button>
+                    {!isLoading && (
+                      <button
+                        className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        type={"submit"}
+                        // onClick={() => setShowModal(false)}
+                      >
+                        S'inscrire
+                      </button>
+                    )}
+                    {isLoading && <Spinner />}
                   </form>
                 </div>
               </div>

@@ -3,7 +3,6 @@ import Login from "./Login";
 import Signup from "./Signup";
 import ReservationTimePicker from "../hooks/ReservationTimepicker";
 
-
 export default function bookingModal({ open, onClose }) {
   if (!open) return null;
   return (
@@ -41,9 +40,7 @@ export default function bookingModal({ open, onClose }) {
                     Nbr couverts
                   </label>
                   <input
-                    type=""
-                    name=""
-                    id=""
+                    id="couverts2"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder="Entre 1 et 20"
                     required
@@ -63,7 +60,10 @@ export default function bookingModal({ open, onClose }) {
                   />
                 </div>
                 <div>
-                  <label htmlFor="reservation-time" className="block mb-2 text-sm text-mywhite">
+                  <label
+                    htmlFor="reservation-time"
+                    className="block mb-2 text-sm text-mywhite"
+                  >
                     Heures
                   </label>
                   <ReservationTimePicker />
@@ -75,8 +75,7 @@ export default function bookingModal({ open, onClose }) {
                   <input
                     type=""
                     name=""
-                    id=""
-                    placeholder=""
+                    id="allergies"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required
                   />
@@ -88,15 +87,17 @@ export default function bookingModal({ open, onClose }) {
                 >
                   Valider
                 </button>
-                <div className="text-sm">
+              </form>
+              <br />
+              <div className="text-sm mt-3">
                 <div className="text-mywhite hover:underline">
                   <Signup />
-                  </div><br />
-                  <div className="text-mywhite hover:underline">
-                  <Login />
-                  </div>
                 </div>
-              </form>
+                <br />
+                <div className="text-mywhite hover:underline">
+                  <Login />
+                </div>
+              </div>
             </div>
           </div>
         </div>

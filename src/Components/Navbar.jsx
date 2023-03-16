@@ -6,12 +6,15 @@ import useReadingProgress from "../hooks/useReadingProgress";
 import logo from "../Assets/Logo/blason_savoie.png";
 import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
-import Modal from "./Modal";
+import Login from "./Login";
+import UserProfil from "./UserProfil";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
+
+  const [isLogin, setIsLogin] = useState(true);
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false);
@@ -33,7 +36,11 @@ export default function Navbar() {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href={"#App"}>
-              <img src={logo} className="h-12 mr-3 sm:h-14 transform duration-500 hover:scale-125" alt="Logo" />
+              <img
+                src={logo}
+                className="h-12 mr-3 sm:h-14 transform duration-500 hover:scale-125"
+                alt="Logo"
+              />
             </a>
             <div className="md:hidden">
               <button
@@ -96,7 +103,7 @@ export default function Navbar() {
                 <a href="#contact">Nous trouver</a>
               </li>
               <li className="hover:text-myyellow hover:underline">
-                <Modal />
+                {isLogin ? <Login /> : <UserProfil />}
               </li>
             </ul>
           </div>

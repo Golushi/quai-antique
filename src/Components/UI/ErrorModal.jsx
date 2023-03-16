@@ -7,7 +7,7 @@ export default function ErrorModal(props) {
       <header className="bg-myred px-6 py-6 text-2xl font-bold w-full text-mywhite flex justify-center p-2">
         <h2>{props.title}</h2>
       </header>
-      <div className="px-6 m-auto py-6 text-lg text-myblack">
+      <div className="px-6 m-auto overflow-x-hidden py-6 text-lg text-myblack">
         <p>{props.message}</p>
       </div>
       <footer className="px-6 py-6">
