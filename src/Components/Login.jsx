@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-//import ReactDOM from "react-dom";
 import ErrorModal from "./UI/ErrorModal";
 import Signup from "./Signup";
 
@@ -7,6 +6,8 @@ export default function Login() {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const [data, setData] = useState();
 
   const [error, setError] = useState();
   if (error) {
@@ -45,13 +46,51 @@ export default function Login() {
     console.log("text");
     console.log(enteredEmail, enteredPassword);
 
+    // Se connecter, recup userId et token
+    const url = "http://localhost:4000/api/authentification/login";
+
+    const fetchHandler = async () => {
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const dataResponse = await response.json();
+        if (response.ok) {
+          setData(dataResponse);
+        } else {
+          setError({
+            title: "Authentification Echec",
+            message: dataResponse.error,
+          });
+        }
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchHandler();
+
     // Vider les imputs
-    emailInputRef.current.value = "";
-    passwordInputRef.current.value = "";
+    // emailInputRef.current.value = "";
+    // passwordInputRef.current.value = "";
   };
   const errorhandler = () => {
     setError(null);
   };
+
+  console.log(data);
+
+  // const backdropClickHandler = () => {
+  //   setShowModal(false);
+  // };
+
   return (
     <>
       <button
@@ -149,7 +188,7 @@ export default function Login() {
                     <button
                       className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                       type={"submit"}
-                      onClick={() => setShowModal(false)}
+                      // onClick={() => setShowModal(false)}
                     >
                       Connexion
                     </button>
