@@ -1,5 +1,6 @@
 import React from "react";
 import "tw-elements";
+
 import img1 from "../Assets/Gallery/gallery-img-1.jpg";
 import img2 from "../Assets/Gallery/gallery-img-2.jpg";
 import img3 from "../Assets/Gallery/gallery-img-3.jpg";

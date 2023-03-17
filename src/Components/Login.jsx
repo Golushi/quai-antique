@@ -11,6 +11,7 @@ export default function Login() {
 
   // Utilisation context
   const authCtx = useContext(AuthContext);
+
   console.log(authCtx);
 
   const [data, setData] = useState();
@@ -154,6 +155,7 @@ export default function Login() {
                       onConfirm={errorhandler}
                     />
                   )}
+
                   <form
                     onSubmit={submitHandler}
                     className="space-y-6"
@@ -210,8 +212,8 @@ export default function Login() {
                         Connexion
                       </button>
                     )}
-                    {isLoading && <Spinner />}
                   </form>
+                  {isLoading && <Spinner />}
                   <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Pas de compte? {""}
                     <div className="text-blue-700 py-2 hover:underline dark:text-blue-500">

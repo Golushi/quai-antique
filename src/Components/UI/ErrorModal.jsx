@@ -13,7 +13,7 @@ export default function ErrorModal(props) {
       <footer className="px-6 py-6">
         <button
           onClick={props.onConfirm}
-          className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:scale-150 outline-none focus:outline-none mr-1 mb-1"
+          className="text-white bg-myyellow active:bg-yellow-700 font-bold transform duration-500 uppercase text-sm px-6 py-3 rounded shadow hover:scale-150 outline-none focus:outline-none mr-1 mb-1"
         >
           OK
         </button>

@@ -3,19 +3,15 @@ import AuthContext from "../store/authContext";
 
 export default function Test() {
   const authCtx = useContext(AuthContext);
-
   const isLoggedIn = authCtx.isLoggedIn;
 
   // Requete acces ressources proteger
-  const url = "http://localhost:4000/api/fiche_user/";
+  const url = `http://localhost:4000/api/fiche_user/fiche/?userId=${authCtx.userId}`;
 
   const fetchHandler = async () => {
     try {
       const response = await fetch(url, {
         method: "GET",
-        // body: JSON.stringify({
-        //   userId: authCtx.userId,
-        // }),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${authCtx.token} `,

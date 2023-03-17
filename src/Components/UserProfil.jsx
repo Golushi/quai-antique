@@ -10,12 +10,9 @@ export default function UserProfil() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const [error, setError] = useState();
-  if (error) {
-  } else {
-  }
+  const [error, setError] = useState(null);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
