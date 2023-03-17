@@ -78,6 +78,7 @@ export default function Login() {
 
         if (response.ok) {
           setData(dataResponse);
+          console.log(dataResponse);
           authCtx.login(dataResponse.token, dataResponse.userId);
         } else {
           setError({

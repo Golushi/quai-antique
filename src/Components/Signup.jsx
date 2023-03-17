@@ -76,7 +76,7 @@ export default function Signup() {
         const dataResponse = await response.json();
         // loading terminé
         setIsLoading(false);
-
+        setShowModal(false);
         if (response.ok) {
           setData(dataResponse);
         } else {
@@ -104,8 +104,8 @@ export default function Signup() {
     fetchHandler();
 
     // Vider les imputs
-    // emailInputRef.current.value = "";
-    // passwordInputRef.current.value = "";
+    emailInputRef.current.value = "";
+    passwordInputRef.current.value = "";
   };
   const errorhandler = () => {
     setError(null);
@@ -246,8 +246,8 @@ export default function Signup() {
                         S'inscrire
                       </button>
                     )}
-                    {isLoading && <Spinner />}
                   </form>
+                  {isLoading && <Spinner />}
                 </div>
               </div>
             </div>

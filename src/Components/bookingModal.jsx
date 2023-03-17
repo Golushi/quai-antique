@@ -8,6 +8,9 @@ import AuthContext from "../store/authContext";
 export default function BookingModal() {
   const [showForm, setShowForm] = useState(false);
 
+  const nomUtilisateur = sessionStorage.getItem("nomUtilisateur");
+  const couverts = sessionStorage.getItem("couverts");
+
   const openForm = () => {
     setShowForm(true);
   };
@@ -53,9 +56,27 @@ export default function BookingModal() {
               </button>
               <div className="px-6 py-6 lg:px-8">
                 <h3 className="mb-4 text-xl font-cabin text-myyellow">
-                  Reservation
+                  Reservation <br />
+                  {isLoggedIn ? nomUtilisateur : "Visiteur"}
                 </h3>
                 <form className="space-y-6" action="#">
+                  {!isLoggedIn && (
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block mb-2 text-sm text-mywhite"
+                      >
+                        Nom
+                      </label>
+                      <input
+                        type=""
+                        name=""
+                        id="name"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        required
+                      />
+                    </div>
+                  )}
                   <div>
                     <label
                       htmlFor=""
@@ -67,6 +88,7 @@ export default function BookingModal() {
                       id="couverts2"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder="Entre 1 et 20"
+                      defaultValue={isLoggedIn ? couverts : ""}
                       required
                     />
                   </div>

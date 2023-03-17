@@ -6,6 +6,8 @@ export default function UserProfil() {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const nomUtilisateur = sessionStorage.getItem("nomUtilisateur");
+  const couverts = sessionStorage.getItem("couverts");
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -88,7 +90,7 @@ export default function UserProfil() {
           setShowModal(true);
         }}
       >
-        User Name
+        <p>{nomUtilisateur}</p>
       </button>
       {showModal ? (
         <>
@@ -141,7 +143,7 @@ export default function UserProfil() {
                       <input
                         type="text"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="nom"
+                        placeholder={nomUtilisateur}
                       />
                     </div>
                     <div>
@@ -154,7 +156,7 @@ export default function UserProfil() {
                       <input
                         type="number"
                         id="couverts"
-                        placeholder="min:1 max:20"
+                        placeholder={couverts}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       />
                     </div>

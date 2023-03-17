@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../store/authContext";
 
-export default function Test() {
+export default function FicheUser() {
   const authCtx = useContext(AuthContext);
+  const [data, setData] = useState([]);
+
   const isLoggedIn = authCtx.isLoggedIn;
 
   // Requete acces ressources proteger
@@ -21,7 +23,7 @@ export default function Test() {
       const dataResponse = await response.json();
 
       if (response.ok) {
-        console.log(dataResponse);
+        setData(dataResponse);
       } else {
         throw new Error(dataResponse.error);
       }
@@ -29,15 +31,32 @@ export default function Test() {
       console.log(error);
     }
   };
-  if (isLoggedIn) {
-    fetchHandler();
-  }
+  // Pour executer la fonction au montage du composant
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchHandler();
+    }
+  }, [isLoggedIn]);
+
+  console.log("SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEETTTTTTTTTTTT");
+  console.log(data.results && data.results[0]);
+
+  sessionStorage.setItem(
+    "nomUtilisateur",
+    data.results && data.results[0].fiche_user_nom
+  );
+  sessionStorage.setItem(
+    "couverts",
+    data.results && data.results[0].fiche_user_couverts
+  );
 
   return (
     <>
       {isLoggedIn && <p>Connected</p>}
       {!isLoggedIn && <p>Vous n'etes pas connecté</p>}
-      {isLoggedIn && <p>Nom : </p>}
+      {isLoggedIn && (
+        <p>Bonjour {data.results && data.results[0].fiche_user_nom} </p>
+      )}
       {isLoggedIn && <p>Votre token : {authCtx.token}</p>}
       {isLoggedIn && <p>Votre userID :{authCtx.userId} </p>}
     </>

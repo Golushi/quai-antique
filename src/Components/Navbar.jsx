@@ -114,7 +114,7 @@ export default function Navbar() {
               >
                 <a href="#contact">Nous trouver</a>
               </li>
-              <li className="hover:text-myyellow hover:underline">
+              <li className="hover:text-myyellow hover:underline flex justify-center">
                 {!isLoggedIn ? <Login /> : <UserProfil />}
               </li>
               <li>
