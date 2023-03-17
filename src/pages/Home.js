@@ -7,15 +7,16 @@ import Menus from "../Components/Menus";
 import Navbar from "../Components/Navbar";
 import OpeningHours from "../Components/OpeningHours";
 import ScrollToTop from "../Components/ScrollToTop";
-import Reservation from "../Components/Reservation";
+
 import Test from "../Components/Test";
+import BookingModal from "../Components/BookingModal";
 
 export default function Home() {
   window.scrollTo(0, 0);
   return (
     <div id="App" className="App">
       <Navbar />
-      <Reservation />
+      <BookingModal />
       <Header />
       <About />
       <Menus />

@@ -5,7 +5,9 @@ import { createContext, useState } from "react";
 const defaultValue = {
   token: "",
   userId: null,
+  userIsLoggedIn: false,
   login: () => {},
+  logout: () => {},
 };
 
 const AuthContext = createContext(defaultValue);
@@ -22,11 +24,22 @@ export const AuthContextProvider = (props) => {
     setUserId(userId);
   };
 
+  // Logout token a null
+  const logoutHandler = () => {
+    setToken(null);
+  };
+
+  // Si token = logge + convertir token en boolean
+  const userIsLoggedIn = !!token;
+  console.log(userIsLoggedIn);
+
   // Context value
   const contextValue = {
     token: token,
     userId: userId,
+    isLoggedIn: userIsLoggedIn,
     login: loginHandler,
+    logout: logoutHandler,
   };
 
   console.log("+++++++++++++++++++++++++++++++++++++++++++++++");

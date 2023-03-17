@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
 import "tw-elements";
 import { useState } from "react";
@@ -8,11 +8,15 @@ import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import UserProfil from "./UserProfil";
+import AuthContext from "../store/authContext";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const toggle = () => setNavbar(!navbar);
   const completion = useReadingProgress();
+
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const [isLogin] = useState(true);
 
@@ -43,9 +47,17 @@ export default function Navbar() {
               />
             </a>
             <div className="md:hidden">
+              {isLoggedIn && (
+                <button
+                  onClick={authCtx.logout}
+                  id={color ? "logoutWhite" : "logout"}
+                  className="inline-block mx-2"
+                  alt="Logout"
+                ></button>
+              )}
               <button
                 id={color ? "button-bg" : "button"}
-                className="animate-pulse"
+                className="animate-pulse inline-block mx-2"
                 onClick={() => setNavbar(!navbar)}
               >
                 <Hamburger
@@ -103,7 +115,17 @@ export default function Navbar() {
                 <a href="#contact">Nous trouver</a>
               </li>
               <li className="hover:text-myyellow hover:underline">
-                {isLogin ? <Login /> : <UserProfil />}
+                {!isLoggedIn ? <Login /> : <UserProfil />}
+              </li>
+              <li>
+                {isLoggedIn && (
+                  <button
+                    id={color ? "logoutWhite" : "logout"}
+                    onClick={authCtx.logout}
+                    className="hidden md:block"
+                    alt="Logout"
+                  ></button>
+                )}
               </li>
             </ul>
           </div>

@@ -48,3 +48,38 @@ body {
   color: rgb(0, 0, 0);
   transition: 1s ease;
 }
+
+#logout {
+background-image: url('./Assets/Logout/logout_white.png');
+background-size: cover;
+height: 40px;
+width: 40px;
+transition: 1s ease;
+}
+
+#logout:hover {
+  background-image: url('./Assets/Logout/logout_hover.png');
+  background-size: cover;
+  scale: 125%;
+  height: 40px;
+  width: 40px;
+  transition: 1.5s ease;
+}
+
+#logoutWhite {
+  background-image: url('./Assets/Logout/logout.png');
+  background-size: cover;
+  
+  height: 40px;
+  width: 40px;
+  transition: 1s ease;
+}
+
+#logoutWhite:hover {
+  background-image: url('./Assets/Logout/logout_hover.png');
+  background-size: cover;
+  scale: 125%;
+  height: 40px;
+  width: 40px;
+  transition: 1.5s ease;
+}
