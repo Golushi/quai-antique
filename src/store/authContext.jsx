@@ -12,21 +12,34 @@ const defaultValue = {
 
 const AuthContext = createContext(defaultValue);
 
+// Controle presence token dans local storage
+const tokenLocalStorage = localStorage.getItem("token");
+const userIdLocalStorage = localStorage.getItem("userId");
+
 // Context provider
 export const AuthContextProvider = (props) => {
   // Stockage token
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(tokenLocalStorage);
+  const [userId, setUserId] = useState(userIdLocalStorage);
 
   // Mettre a jour token
   const loginHandler = (token, userId) => {
     setToken(token);
     setUserId(userId);
+
+    // Mettre la donnée dans le local storage
+    localStorage.setItem("token", token);
+    localStorage.setItem("userId", userId);
   };
 
   // Logout token a null
   const logoutHandler = () => {
     setToken(null);
+    setUserId(null);
+    // Suppr donnée locale storage
+    // localStorage.removeItem("token", token);
+    // localStorage.removeItem("userId", userId);
+    localStorage.clear();
   };
 
   // Si token = logge + convertir token en boolean

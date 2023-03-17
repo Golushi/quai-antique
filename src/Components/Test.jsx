@@ -6,6 +6,37 @@ export default function Test() {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
+  // Requete acces ressources proteger
+  const url = "http://localhost:4000/api/fiche_user/";
+
+  const fetchHandler = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        // body: JSON.stringify({
+        //   userId: authCtx.userId,
+        // }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authCtx.token} `,
+        },
+      });
+
+      const dataResponse = await response.json();
+
+      if (response.ok) {
+        console.log(dataResponse);
+      } else {
+        throw new Error(dataResponse.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  if (isLoggedIn) {
+    fetchHandler();
+  }
+
   return (
     <>
       {isLoggedIn && <p>Connected</p>}

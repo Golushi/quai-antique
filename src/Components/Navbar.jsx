@@ -18,7 +18,7 @@ export default function Navbar() {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
 
-  const [isLogin] = useState(true);
+  // const [isLogin] = useState(true);
 
   // Change nav color when scrolling
   const [color, setColor] = useState(false);
@@ -46,7 +46,7 @@ export default function Navbar() {
                 alt="Logo"
               />
             </a>
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
               {isLoggedIn && (
                 <button
                   onClick={authCtx.logout}
