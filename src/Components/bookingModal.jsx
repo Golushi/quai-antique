@@ -8,7 +8,7 @@ import AuthContext from "../store/authContext";
 export default function BookingModal() {
   const [showForm, setShowForm] = useState(false);
 
-  const nomUtilisateur = sessionStorage.getItem("nomUtilisateur");
+  const nom = sessionStorage.getItem("nom");
   const couverts = sessionStorage.getItem("couverts");
 
   const openForm = () => {
@@ -57,7 +57,7 @@ export default function BookingModal() {
               <div className="px-6 py-6 lg:px-8">
                 <h3 className="mb-4 text-xl font-cabin text-myyellow">
                   Reservation <br />
-                  {isLoggedIn ? nomUtilisateur : "Visiteur"}
+                  {isLoggedIn ? nom : "Visiteur"}
                 </h3>
                 <form className="space-y-6" action="#">
                   {!isLoggedIn && (
