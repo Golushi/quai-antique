@@ -73,7 +73,6 @@ export default function FicheUser() {
       {!isLoggedIn && <p>Vous n'etes pas connecté</p>}
       {isLoggedIn && <p>Votre token : {authCtx.token}</p>}
       {isLoggedIn && <p>Votre userID :{authCtx.userId} </p>}
-
       {/* <FicheUserDisplay data={data} /> */}
       <UserProfil data={data} />
     </>
