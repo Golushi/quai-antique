@@ -57,16 +57,6 @@ export default function FicheUser() {
 
   data.autre = data.autre === null ? "" : data.autre;
 
-  sessionStorage.setItem("nom", data.nom);
-  sessionStorage.setItem("couverts", data.couverts);
-  sessionStorage.setItem("arachide", data.arachide);
-  sessionStorage.setItem("autre", data.autre);
-  sessionStorage.setItem("fruitsCoques", data.fruitsCoques);
-  sessionStorage.setItem("lait", data.lait);
-  sessionStorage.setItem("oeuf", data.oeuf);
-  sessionStorage.setItem("userId", data.userId);
-  sessionStorage.setItem("idFiche", data.idFiche);
-
   return (
     <>
       {isLoggedIn && <p>Connected</p>}
