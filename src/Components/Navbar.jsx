@@ -1,15 +1,14 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import "../App.css";
 import "tw-elements";
-import { useState } from "react";
-import useReadingProgress from "../hooks/useReadingProgress";
-import logo from "../Assets/Logo/blason_savoie.png";
 import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import UserProfil from "./UserProfil";
 import AuthContext from "../store/authContext";
 import { onRefresh } from "./UI/utils";
+import logo from "../Assets/Logo/blason_savoie.png";
+import useReadingProgress from "../hooks/useReadingProgress";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -78,7 +77,10 @@ export default function Navbar() {
   };
   window.addEventListener("scroll", changeNav);
 
-  onRefresh();
+  const refreshData = async () => {
+    await fetchHandler();
+    onRefresh();
+  };
 
   return (
     <nav

@@ -1,16 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../store/authContext";
-import ErrorModal from "./UI/ErrorModal";
 import Spinner from "./UI/Spinner";
 import { onRefresh } from "./UI/utils";
 
 export default function UserProfil({ data }) {
   const [showModal, setShowModal] = useState(false);
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
-
-  console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-  console.log(data);
 
   const [dataUpdate, setDataUpdate] = useState(data);
   console.log("dataUpdateeeeeeeeeeeeeeeeeeeeee");
@@ -40,71 +34,7 @@ export default function UserProfil({ data }) {
   const lait = dataUpdate.lait;
   const oeuf = dataUpdate.oeuf;
 
-  const [datas, setDatas] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [error, setError] = useState(null);
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
-
-    // Restriction case vide
-    if (
-      enteredEmail.trim().length === 0 ||
-      enteredPassword.trim().length === 0
-    ) {
-      return;
-    }
-
-    // Spinner loading
-    setIsLoading(true);
-
-    // Se connecter, recup userId et token
-    const url = "http://localhost:4000/api/fiche_user/";
-
-    const fetchHandler = async () => {
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const dataResponse = await response.json();
-        // loading terminé
-        setIsLoading(false);
-
-        if (response.ok) {
-          setDatas(dataResponse);
-        } else {
-          setError({
-            title: "Authentification Echec",
-            message: dataResponse.error,
-          });
-          const errorMessage = "authentification echec";
-          throw new Error(errorMessage);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchHandler();
-
-    // Vider les imputs
-    emailInputRef.current.value = "";
-    passwordInputRef.current.value = "";
-  };
-  const errorhandler = () => {
-    setError(null);
-  };
+  const [isLoading] = useState(false);
 
   // Modif données
   const modificationHandler = () => {
@@ -160,15 +90,6 @@ export default function UserProfil({ data }) {
             Authorization: `Bearer ${authCtx.token}`,
           },
           body: JSON.stringify(sendData),
-          // JSON.stringify({
-          //   nom: enteredNom,
-          //   couverts: enteredCouverts,
-          //   arachide: enteredArachide,
-          //   autre: enteredAutre,
-          //   fruitsCoques: enteredFruitsCoques,
-          //   lait: enteredLait,
-          //   oeuf: enteredOeuf,
-          // }),
         });
         const dataResponse = await response.json();
 
@@ -249,13 +170,13 @@ export default function UserProfil({ data }) {
                   <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                     Paramètres
                   </h3>
-                  {error && (
+                  {/* {error && (
                     <ErrorModal
                       title={error.title}
                       message={error.message}
                       onConfirm={errorhandler}
                     />
-                  )}
+                  )} */}
                   <form
                     // onSubmit={submitHandler}
                     className="space-y-6"

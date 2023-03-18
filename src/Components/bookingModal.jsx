@@ -4,6 +4,7 @@ import Signup from "./Signup";
 import ReservationTimePicker from "../hooks/ReservationTimepicker";
 
 import AuthContext from "../store/authContext";
+import { onRefresh } from "./UI/utils";
 
 export default function BookingModal() {
   const [showForm, setShowForm] = useState(false);
