@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AuthContext from "../store/authContext";
 import ErrorModal from "./UI/ErrorModal";
 import Spinner from "./UI/Spinner";
+import { onRefresh } from "./UI/utils";
 
 export default function UserProfil({ data }) {
   const [showModal, setShowModal] = useState(false);
@@ -15,6 +17,7 @@ export default function UserProfil({ data }) {
   console.log(dataUpdate);
 
   const [modification, setModification] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const nomInputRef = useRef();
   const couvertsInputRef = useRef();
@@ -103,11 +106,6 @@ export default function UserProfil({ data }) {
     setError(null);
   };
 
-  console.log(datas);
-  // const backdropClickHandler = () => {
-  //   setShowModal(false);
-  // };
-
   // Modif données
   const modificationHandler = () => {
     setModification((modification) => !modification);
@@ -135,7 +133,81 @@ export default function UserProfil({ data }) {
       lait: enteredLait,
       oeuf: enteredOeuf,
     });
+
+    // Creation objet avec les proprietées à envoyer
+    const dataUpdateSend = {
+      nom: enteredNom,
+      couverts: enteredCouverts,
+      arachide: enteredArachide,
+      autre: enteredAutre,
+      fruitsCoques: enteredFruitsCoques,
+      lait: enteredLait,
+      oeuf: enteredOeuf,
+    };
+
+    // Envoyer les nouvelles données vers le serveur
+    // const sendData = new SendData();
+    // sendData.append = dataUpdate;
+    const url = `http://localhost:4000/api/fiche_user/23?userId=${authCtx.userId}`;
+    const sendData = dataUpdateSend;
+
+    const fetchUploadHandler = async () => {
+      try {
+        const response = await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authCtx.token}`,
+          },
+          body: JSON.stringify(sendData),
+          // JSON.stringify({
+          //   nom: enteredNom,
+          //   couverts: enteredCouverts,
+          //   arachide: enteredArachide,
+          //   autre: enteredAutre,
+          //   fruitsCoques: enteredFruitsCoques,
+          //   lait: enteredLait,
+          //   oeuf: enteredOeuf,
+          // }),
+        });
+        const dataResponse = await response.json();
+
+        if (response.ok) {
+          console.log("*********** RESPONSE.OK ************");
+          console.log(response);
+          console.log(dataResponse);
+        } else {
+          console.log("*********** RESPONSE.PAS OK ************");
+          console.log(response);
+          console.log(dataResponse);
+          throw new Error(dataResponse.error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUploadHandler();
   };
+
+  // Requete GET
+
+  useEffect(() => {
+    onRefresh();
+  }, [modification]);
+
+  sessionStorage.setItem("nom", nom);
+  sessionStorage.setItem("couverts", couverts);
+  sessionStorage.setItem("arachide", arachide);
+  sessionStorage.setItem("autre", autre);
+  sessionStorage.setItem("fruitsCoques", fruitsCoques);
+  sessionStorage.setItem("lait", lait);
+  sessionStorage.setItem("oeuf", oeuf);
+  sessionStorage.setItem("userId", data.userId);
+  sessionStorage.setItem("idFiche", data.idFiche);
+
+  console.log("TTTTTTTTTTTTTTTTTTTTTTTTT");
+  console.log(data.idFiche);
+  console.log(data.userId);
 
   return (
     <>
@@ -224,14 +296,19 @@ export default function UserProfil({ data }) {
                         </p>
                       )}
                       {modification && (
-                        <input
+                        <select
                           onChange={changeHandler}
                           ref={couvertsInputRef}
-                          type="number"
                           id="couverts"
                           defaultValue={couverts}
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        />
+                        >
+                          {Array.from(Array(20).keys()).map((value) => (
+                            <option key={value} value={value + 1}>
+                              {value + 1}
+                            </option>
+                          ))}
+                        </select>
                       )}
                     </div>
                     <div className="text-black">
@@ -347,7 +424,7 @@ export default function UserProfil({ data }) {
                     {!isLoading && (
                       <button
                         className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                        // type={"submit"}
+                        type={"submit"}
                         onClick={modificationHandler}
                       >
                         {!modification ? "Modifier" : "Envoyer"}

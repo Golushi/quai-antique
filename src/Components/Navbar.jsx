@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import UserProfil from "./UserProfil";
 import AuthContext from "../store/authContext";
+import { onRefresh } from "./UI/utils";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -66,8 +67,6 @@ export default function Navbar() {
     }
   }, [fetchHandler, isLoggedIn]);
 
-  // const [isLogin] = useState(true);
-
   // Change nav color when scrolling
   const [color, setColor] = useState(false);
   const changeNav = () => {
@@ -78,6 +77,8 @@ export default function Navbar() {
     }
   };
   window.addEventListener("scroll", changeNav);
+
+  onRefresh();
 
   return (
     <nav
@@ -163,7 +164,11 @@ export default function Navbar() {
                 <a href="#contact">Nous trouver</a>
               </li>
               <li className="hover:text-myyellow hover:underline flex justify-center">
-                {!isLoggedIn ? <Login /> : <UserProfil data={data} />}
+                {!isLoggedIn ? (
+                  <Login />
+                ) : (
+                  <UserProfil data={data} onRefresh={onRefresh} />
+                )}
               </li>
               <li>
                 {isLoggedIn && (
