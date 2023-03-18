@@ -51,7 +51,7 @@ export default function Navbar() {
                 <button
                   onClick={authCtx.logout}
                   id={color ? "logoutWhite" : "logout"}
-                  className="inline-block mx-2"
+                  className="inline-block animate-pulse mx-2"
                   alt="Logout"
                 ></button>
               )}
@@ -122,7 +122,7 @@ export default function Navbar() {
                   <button
                     id={color ? "logoutWhite" : "logout"}
                     onClick={authCtx.logout}
-                    className="hidden md:block"
+                    className="hidden animate-pulse md:block"
                     alt="Logout"
                   ></button>
                 )}

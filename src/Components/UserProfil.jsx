@@ -6,8 +6,14 @@ export default function UserProfil() {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
   const nomUtilisateur = sessionStorage.getItem("nomUtilisateur");
   const couverts = sessionStorage.getItem("couverts");
+  const arachide = sessionStorage.getItem("arachide");
+  const autre = sessionStorage.getItem("autre");
+  const fruitsCoques = sessionStorage.getItem("fruitsCoques");
+  const lait = sessionStorage.getItem("lait");
+  const oeuf = sessionStorage.getItem("oeuf");
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -143,7 +149,7 @@ export default function UserProfil() {
                       <input
                         type="text"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder={nomUtilisateur}
+                        defaultValue={nomUtilisateur}
                       />
                     </div>
                     <div>
@@ -156,11 +162,11 @@ export default function UserProfil() {
                       <input
                         type="number"
                         id="couverts"
-                        placeholder={couverts}
+                        defaultValue={couverts}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       />
                     </div>
-                    <div>
+                    <div className="text-black">
                       <label
                         htmlFor="couverts"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -168,25 +174,45 @@ export default function UserProfil() {
                         Allergies :
                       </label>
                       <div>
-                        <input type="checkbox" id="fruitsCoques" />
+                        <input
+                          defaultChecked={fruitsCoques === "1"}
+                          type="checkbox"
+                          id="fruitsCoques"
+                        />
                         <label htmlFor="fruitsCoques">Fruits à coque</label>
                       </div>
                       <div>
-                        <input type="checkbox" id="arachide" />
+                        <input
+                          defaultChecked={arachide === "1"}
+                          type="checkbox"
+                          id="arachide"
+                        />
                         <label htmlFor="arachide">Arachide</label>
                       </div>
                       <div>
-                        <input type="checkbox" id="oeuf" />
+                        <input
+                          defaultChecked={oeuf === "1"}
+                          type="checkbox"
+                          id="oeuf"
+                        />
                         <label htmlFor="oeuf">Oeuf</label>
                       </div>
                       <div>
-                        <input type="checkbox" id="lait" />
+                        <input
+                          defaultChecked={lait === "1"}
+                          type="checkbox"
+                          id="lait"
+                        />
                         <label htmlFor="lait">Lait</label>
                       </div>
-                      <div>
-                        <input type="checkbox" id="autre" />
+                      <div className="m-2">
                         <label htmlFor="autre">Autre :</label>
-                        <input type="text" id="autreAllergie" />
+                        <input
+                          className="mx-2"
+                          type="text"
+                          id="autreAllergie"
+                          defaultValue={autre}
+                        />
                       </div>
                     </div>
                     <button
