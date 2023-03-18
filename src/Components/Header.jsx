@@ -29,6 +29,7 @@ export default function Header() {
               src={img1}
               className="block top-0 object-cover w-full h-screen"
               alt="raclette"
+              title="raclette"
             />
             <div className="bg-black/50 absolute top-0 left-0 w-full h-screen" />
           </div>
@@ -40,6 +41,7 @@ export default function Header() {
               src={img2}
               className="block top-0 object-cover w-full h-screen"
               alt="table"
+              title="table"
             />
             <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
           </div>
@@ -51,6 +53,7 @@ export default function Header() {
               src={img3}
               className="block top-0 object-cover w-full h-screen"
               alt="service à raclette"
+              title="service à raclette"
             />
             <div className="bg-black/30 absolute top-0 left-0 w-full h-screen" />
           </div>

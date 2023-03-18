@@ -33,6 +33,7 @@ export default function Carte() {
           src={jambon}
           className="md:w-[1000px] m-auto p-3"
           alt="Jambon cru"
+          title="Jambon cru"
         />
         <div className="font-lf font-bold grid md:grid-cols-3 text-center justify-items-center gap-3 my-3">
           <div className="">
@@ -115,6 +116,7 @@ export default function Carte() {
           src={tartiflette}
           className="md:w-[800px] m-auto p-3"
           alt="tartiflette"
+          title="tartiflette"
         />
         <div className="font-lf font-bold grid md:grid-cols-3 text-center justify-items-center gap-3 my-3">
           <div className="">
@@ -285,6 +287,7 @@ export default function Carte() {
           src={raclette}
           className="md:w-[800px] m-auto p-3"
           alt="raclette"
+          title="raclette"
         />
         <div className="font-lf font-bold grid md:grid-cols-3 text-center justify-items-center gap-3 my-3">
           <div className="">

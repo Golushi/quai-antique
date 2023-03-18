@@ -94,6 +94,7 @@ export default function About() {
                 src={g2img1}
                 className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="interieur restaurant"
+                title="interieur restaurant"
               />
             </div>
             <div
@@ -105,6 +106,7 @@ export default function About() {
                 src={g2img2}
                 className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="preparation raclette"
+                title="preparation raclette"
               />
             </div>
             <div
@@ -116,6 +118,7 @@ export default function About() {
                 src={g2img3}
                 className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="fromages"
+                title="fromages"
               />
             </div>
             <div
@@ -127,6 +130,7 @@ export default function About() {
                 src={g2img4}
                 className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="raclette"
+                title="raclette"
               />
             </div>
             <div
@@ -138,6 +142,7 @@ export default function About() {
                 src={g2img5}
                 className="block md:w-[500px] sm:w-[400px] w-[300px]"
                 alt="fromage coulant"
+                title="fromage coulant"
               />
             </div>
           </div>

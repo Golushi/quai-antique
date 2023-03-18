@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import "../App.css";
 import "tw-elements";
 import { useState } from "react";
@@ -17,6 +17,54 @@ export default function Navbar() {
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+
+  const [data, setData] = useState([]);
+
+  // Requete acces ressources proteger
+  const url = `http://localhost:4000/api/fiche_user/fiche/?userId=${authCtx.userId}`;
+
+  const fetchHandler = useCallback(async () => {
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authCtx.token} `,
+        },
+      });
+
+      const dataResponse = await response.json();
+
+      if (response.ok) {
+        // Reformatage donnée
+        const transformedData = () => {
+          return {
+            arachide: dataResponse.results[0].fiche_user_arachide,
+            autre: dataResponse.results[0].fiche_user_autre,
+            couverts: dataResponse.results[0].fiche_user_couverts,
+            fruitsCoques: dataResponse.results[0].fiche_user_fruitsCoques,
+            lait: dataResponse.results[0].fiche_user_lait,
+            nom: dataResponse.results[0].fiche_user_nom,
+            oeuf: dataResponse.results[0].fiche_user_oeuf,
+            userId: dataResponse.results[0].fiche_user_userId,
+            idFiche: dataResponse.results[0].id_fiche_user,
+          };
+        };
+
+        setData(transformedData);
+      } else {
+        throw new Error(dataResponse.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [authCtx.token, url]);
+  // Pour executer la fonction au montage du composant
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchHandler();
+    }
+  }, [fetchHandler, isLoggedIn]);
 
   // const [isLogin] = useState(true);
 
@@ -115,7 +163,7 @@ export default function Navbar() {
                 <a href="#contact">Nous trouver</a>
               </li>
               <li className="hover:text-myyellow hover:underline flex justify-center">
-                {!isLoggedIn ? <Login /> : <UserProfil />}
+                {!isLoggedIn ? <Login /> : <UserProfil data={data} />}
               </li>
               <li>
                 {isLoggedIn && (

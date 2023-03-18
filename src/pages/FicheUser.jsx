@@ -1,4 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+
+import UserProfil from "../Components/UserProfil";
 import AuthContext from "../store/authContext";
 
 export default function FicheUser() {
@@ -31,7 +33,7 @@ export default function FicheUser() {
             couverts: dataResponse.results[0].fiche_user_couverts,
             fruitsCoques: dataResponse.results[0].fiche_user_fruitsCoques,
             lait: dataResponse.results[0].fiche_user_lait,
-            nomUtilisateur: dataResponse.results[0].fiche_user_nom,
+            nom: dataResponse.results[0].fiche_user_nom,
             oeuf: dataResponse.results[0].fiche_user_oeuf,
             userId: dataResponse.results[0].fiche_user_userId,
             idFiche: dataResponse.results[0].id_fiche_user,
@@ -55,7 +57,7 @@ export default function FicheUser() {
 
   data.autre = data.autre === null ? "" : data.autre;
 
-  sessionStorage.setItem("nomUtilisateur", data.nomUtilisateur);
+  sessionStorage.setItem("nom", data.nom);
   sessionStorage.setItem("couverts", data.couverts);
   sessionStorage.setItem("arachide", data.arachide);
   sessionStorage.setItem("autre", data.autre);
@@ -71,6 +73,9 @@ export default function FicheUser() {
       {!isLoggedIn && <p>Vous n'etes pas connecté</p>}
       {isLoggedIn && <p>Votre token : {authCtx.token}</p>}
       {isLoggedIn && <p>Votre userID :{authCtx.userId} </p>}
+
+      {/* <FicheUserDisplay data={data} /> */}
+      <UserProfil data={data} />
     </>
   );
 }

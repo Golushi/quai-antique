@@ -1,21 +1,43 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ErrorModal from "./UI/ErrorModal";
 import Spinner from "./UI/Spinner";
 
-export default function UserProfil() {
+export default function UserProfil({ data }) {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const nomUtilisateur = sessionStorage.getItem("nomUtilisateur");
-  const couverts = sessionStorage.getItem("couverts");
-  const arachide = sessionStorage.getItem("arachide");
-  const autre = sessionStorage.getItem("autre");
-  const fruitsCoques = sessionStorage.getItem("fruitsCoques");
-  const lait = sessionStorage.getItem("lait");
-  const oeuf = sessionStorage.getItem("oeuf");
+  console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+  console.log(data);
 
-  const [data, setData] = useState();
+  const [dataUpdate, setDataUpdate] = useState(data);
+  console.log("dataUpdateeeeeeeeeeeeeeeeeeeeee");
+  console.log(dataUpdate);
+
+  const [modification, setModification] = useState(false);
+
+  const nomInputRef = useRef();
+  const couvertsInputRef = useRef();
+  const arachideInputRef = useRef();
+  const autreInputRef = useRef();
+  const fruitsCoquesInputRef = useRef();
+  const laitInputRef = useRef();
+  const oeufInputRef = useRef();
+
+  // Mettre a jour dataUpdates
+  useEffect(() => {
+    setDataUpdate(data);
+  }, [data]);
+
+  const nom = dataUpdate.nom;
+  const couverts = dataUpdate.couverts;
+  const arachide = dataUpdate.arachide;
+  const autre = dataUpdate.autre;
+  const fruitsCoques = dataUpdate.fruitsCoques;
+  const lait = dataUpdate.lait;
+  const oeuf = dataUpdate.oeuf;
+
+  const [datas, setDatas] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState(null);
@@ -57,7 +79,7 @@ export default function UserProfil() {
         setIsLoading(false);
 
         if (response.ok) {
-          setData(dataResponse);
+          setDatas(dataResponse);
         } else {
           setError({
             title: "Authentification Echec",
@@ -81,11 +103,39 @@ export default function UserProfil() {
     setError(null);
   };
 
-  console.log(data);
-
+  console.log(datas);
   // const backdropClickHandler = () => {
   //   setShowModal(false);
   // };
+
+  // Modif données
+  const modificationHandler = () => {
+    setModification((modification) => !modification);
+    console.log(modification);
+  };
+
+  // Pour survveiller les modifs
+  const changeHandler = () => {
+    const enteredNom = nomInputRef.current.value;
+    const enteredCouverts = couvertsInputRef.current.value;
+    const enteredArachide = arachideInputRef.current.checked ? 1 : 0;
+    const enteredAutre = autreInputRef.current.value;
+    const enteredFruitsCoques = fruitsCoquesInputRef.current.checked ? 1 : 0;
+    const enteredLait = laitInputRef.current.checked ? 1 : 0;
+    const enteredOeuf = oeufInputRef.current.checked ? 1 : 0;
+
+    // Mettre a jour le state
+    setDataUpdate({
+      ...dataUpdate,
+      nom: enteredNom,
+      couverts: enteredCouverts,
+      arachide: enteredArachide,
+      autre: enteredAutre,
+      fruitsCoques: enteredFruitsCoques,
+      lait: enteredLait,
+      oeuf: enteredOeuf,
+    });
+  };
 
   return (
     <>
@@ -96,7 +146,7 @@ export default function UserProfil() {
           setShowModal(true);
         }}
       >
-        <p>{nomUtilisateur}</p>
+        <p>{nom}</p>
       </button>
       {showModal ? (
         <>
@@ -135,7 +185,7 @@ export default function UserProfil() {
                     />
                   )}
                   <form
-                    onSubmit={submitHandler}
+                    // onSubmit={submitHandler}
                     className="space-y-6"
                     action="#"
                   >
@@ -146,11 +196,20 @@ export default function UserProfil() {
                       >
                         Nom d'utilisateur
                       </label>
-                      <input
-                        type="text"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        defaultValue={nomUtilisateur}
-                      />
+                      {!modification && (
+                        <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                          {nom}
+                        </p>
+                      )}
+                      {modification && (
+                        <input
+                          onChange={changeHandler}
+                          ref={nomInputRef}
+                          type="text"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                          defaultValue={nom}
+                        />
+                      )}
                     </div>
                     <div>
                       <label
@@ -159,12 +218,21 @@ export default function UserProfil() {
                       >
                         Nombre de couverts par défaut :
                       </label>
-                      <input
-                        type="number"
-                        id="couverts"
-                        defaultValue={couverts}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      />
+                      {!modification && (
+                        <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                          {couverts}
+                        </p>
+                      )}
+                      {modification && (
+                        <input
+                          onChange={changeHandler}
+                          ref={couvertsInputRef}
+                          type="number"
+                          id="couverts"
+                          defaultValue={couverts}
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        />
+                      )}
                     </div>
                     <div className="text-black">
                       <label
@@ -174,45 +242,99 @@ export default function UserProfil() {
                         Allergies :
                       </label>
                       <div>
-                        <input
-                          defaultChecked={fruitsCoques === "1"}
-                          type="checkbox"
-                          id="fruitsCoques"
-                        />
+                        {!modification && (
+                          <input
+                            checked={fruitsCoques === 1}
+                            type="checkbox"
+                            id="fruitsCoques"
+                            disabled
+                          />
+                        )}
+                        {modification && (
+                          <input
+                            onChange={changeHandler}
+                            ref={fruitsCoquesInputRef}
+                            checked={fruitsCoques === 1}
+                            type="checkbox"
+                            id="fruitsCoques"
+                          />
+                        )}
                         <label htmlFor="fruitsCoques">Fruits à coque</label>
                       </div>
                       <div>
-                        <input
-                          defaultChecked={arachide === "1"}
-                          type="checkbox"
-                          id="arachide"
-                        />
+                        {!modification && (
+                          <input
+                            checked={arachide === 1}
+                            type="checkbox"
+                            id="arachide"
+                            disabled
+                          />
+                        )}
+                        {modification && (
+                          <input
+                            onChange={changeHandler}
+                            ref={arachideInputRef}
+                            checked={arachide === 1}
+                            type="checkbox"
+                            id="arachide"
+                          />
+                        )}
                         <label htmlFor="arachide">Arachide</label>
                       </div>
                       <div>
-                        <input
-                          defaultChecked={oeuf === "1"}
-                          type="checkbox"
-                          id="oeuf"
-                        />
+                        {!modification && (
+                          <input
+                            checked={oeuf === 1}
+                            type="checkbox"
+                            id="oeuf"
+                            disabled
+                          />
+                        )}
+                        {modification && (
+                          <input
+                            onChange={changeHandler}
+                            ref={oeufInputRef}
+                            checked={oeuf === 1}
+                            type="checkbox"
+                            id="oeuf"
+                          />
+                        )}
                         <label htmlFor="oeuf">Oeuf</label>
                       </div>
                       <div>
-                        <input
-                          defaultChecked={lait === "1"}
-                          type="checkbox"
-                          id="lait"
-                        />
+                        {!modification && (
+                          <input
+                            checked={lait === 1}
+                            type="checkbox"
+                            id="lait"
+                            disabled
+                          />
+                        )}
+                        {modification && (
+                          <input
+                            onChange={changeHandler}
+                            ref={laitInputRef}
+                            checked={lait === 1}
+                            type="checkbox"
+                            id="lait"
+                          />
+                        )}
+
                         <label htmlFor="lait">Lait</label>
                       </div>
                       <div className="m-2">
                         <label htmlFor="autre">Autre :</label>
-                        <input
-                          className="mx-2"
-                          type="text"
-                          id="autreAllergie"
-                          defaultValue={autre}
-                        />
+                        {!modification && <p>{autre}</p>}
+                        {modification && (
+                          <input
+                            onChange={changeHandler}
+                            ref={autreInputRef}
+                            className="mx-2"
+                            type="text"
+                            id="autreAllergie"
+                            defaultValue={autre}
+                          />
+                        )}
                       </div>
                     </div>
                     <button
@@ -225,10 +347,10 @@ export default function UserProfil() {
                     {!isLoading && (
                       <button
                         className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                        type={"submit"}
-                        // onClick={() => setShowModal(false)}
+                        // type={"submit"}
+                        onClick={modificationHandler}
                       >
-                        Enregistrer
+                        {!modification ? "Modifier" : "Envoyer"}
                       </button>
                     )}
                     {isLoading && <Spinner />}
