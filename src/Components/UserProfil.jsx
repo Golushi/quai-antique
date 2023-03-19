@@ -78,7 +78,9 @@ export default function UserProfil({ data }) {
     // Envoyer les nouvelles données vers le serveur
     // const sendData = new SendData();
     // sendData.append = dataUpdate;
-    const url = `http://localhost:4000/api/fiche_user/23?userId=${authCtx.userId}`;
+    const ficheId = dataUpdate.idFiche;
+
+    const url = `http://localhost:4000/api/fiche_user/${ficheId}?userId=${authCtx.userId}`;
     const sendData = dataUpdateSend;
 
     const fetchUploadHandler = async () => {

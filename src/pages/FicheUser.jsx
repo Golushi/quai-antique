@@ -59,11 +59,11 @@ export default function FicheUser() {
 
   return (
     <>
-      {isLoggedIn && <p>Connected</p>}
+      {/* {isLoggedIn && <p>Connected</p>}
       {!isLoggedIn && <p>Vous n'etes pas connecté</p>}
       {isLoggedIn && <p>Votre token : {authCtx.token}</p>}
       {isLoggedIn && <p>Votre userID :{authCtx.userId} </p>}
-      {/* <FicheUserDisplay data={data} /> */}
+      <FicheUserDisplay data={data} /> */}
       <UserProfil data={data} />
     </>
   );
