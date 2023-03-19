@@ -15,21 +15,25 @@ const AuthContext = createContext(defaultValue);
 // Controle presence token dans local storage
 const tokenLocalStorage = localStorage.getItem("token");
 const userIdLocalStorage = localStorage.getItem("userId");
+// const ficheIdLocalStorage = localStorage.getItem("id_fiche_user");
 
 // Context provider
 export const AuthContextProvider = (props) => {
   // Stockage token
   const [token, setToken] = useState(tokenLocalStorage);
   const [userId, setUserId] = useState(userIdLocalStorage);
+  // const [ficheId, setFicheId] = useState(ficheIdLocalStorage);
 
   // Mettre a jour token
-  const loginHandler = (token, userId) => {
+  const loginHandler = (token, userId, ficheId) => {
     setToken(token);
     setUserId(userId);
+    // setFicheId(ficheId);
 
     // Mettre la donnée dans le local storage
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
+    // localStorage.setItem("id_fiche_user", ficheId);
   };
 
   // Logout token a null
