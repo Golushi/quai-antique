@@ -75,35 +75,9 @@ export default function Login() {
         const dataResponse = await response.json();
         // loading terminé
         setIsLoading(false);
-
         if (response.ok) {
           setData(dataResponse);
-          console.log("DATA RESPONSEEEEEEEEEEEEEEEEEEEEEEEEEE");
-          console.log(dataResponse);
           authCtx.login(dataResponse.token, dataResponse.userId);
-          console.log("ID DE CONNECTION");
-          console.log(dataResponse.userId);
-          //
-          //
-          //
-          const controlArrayNotEmpty =
-            Array.isArray(dataResponse.results) && dataResponse.results.length;
-          console.log("CONTROL ARrAY");
-          console.log(controlArrayNotEmpty);
-          if (controlArrayNotEmpty) {
-            console.log("le tableau est vide, creer le tableau");
-            //
-            //
-            //
-            //
-            //
-            //
-          } else {
-            console.log("le tableau n'est pas vide continue");
-          }
-          //
-          //
-          //
         } else {
           setError({
             title: "Authentification Echec",
@@ -128,10 +102,6 @@ export default function Login() {
   };
 
   console.log(data);
-
-  // const backdropClickHandler = () => {
-  //   setShowModal(false);
-  // };
 
   return (
     <>

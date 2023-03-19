@@ -75,7 +75,6 @@ export default function Menus() {
             </p>
           </div>
         </div>
-
         <button className="border-2 border-myyellow transform duration-500 hover:scale-125 text-myyellow hover:bg-myyellow hover:text-mywhite h-[50px] m-auto xs:w-[300px] bottom-0 flex text-center justify-center items-center">
           <NavLink
             to="/Carte"

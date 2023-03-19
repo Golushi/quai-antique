@@ -75,9 +75,6 @@ export default function UserProfil({ data }) {
       oeuf: enteredOeuf,
     };
 
-    // Envoyer les nouvelles données vers le serveur
-    // const sendData = new SendData();
-    // sendData.append = dataUpdate;
     const ficheId = dataUpdate.idFiche;
 
     const url = `http://localhost:4000/api/fiche_user/${ficheId}?userId=${authCtx.userId}`;
@@ -319,7 +316,6 @@ export default function UserProfil({ data }) {
                             id="lait"
                           />
                         )}
-
                         <label htmlFor="lait">Lait</label>
                       </div>
                       <div className="m-2">

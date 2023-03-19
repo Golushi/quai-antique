@@ -41,8 +41,6 @@ export const AuthContextProvider = (props) => {
     setToken(null);
     setUserId(null);
     // Suppr donnée locale storage
-    // localStorage.removeItem("token", token);
-    // localStorage.removeItem("userId", userId);
     localStorage.clear();
   };
 
