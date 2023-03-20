@@ -10,6 +10,15 @@ export default function BookingModal() {
 
   const nom = sessionStorage.getItem("nom");
   const couverts = sessionStorage.getItem("couverts");
+  const arachide = sessionStorage.getItem("arachide");
+  const fruitsCoques = sessionStorage.getItem("fruitsCoques");
+  const oeuf = sessionStorage.getItem("oeuf");
+  const lait = sessionStorage.getItem("lait");
+  const autre = sessionStorage.getItem("autre");
+  console.log("LAIT");
+  console.log(lait);
+  console.log("OEUF");
+  console.log(oeuf);
 
   const openForm = () => {
     setShowForm(true);
@@ -117,20 +126,63 @@ export default function BookingModal() {
                     </label>
                     <ReservationTimePicker />
                   </div>
-                  <div>
+                  <div className="text-white">
                     <label
-                      htmlFor=""
-                      className="block mb-2 text-sm text-mywhite"
+                      htmlFor="Allergies"
+                      className="block mb-2 text-sm font-medium dark:text-white"
                     >
-                      Allergies
+                      Allergies :
                     </label>
-                    <input
-                      type=""
-                      name=""
-                      id="allergies"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      required
-                    />
+                    <div className="">
+                      <input
+                        defaultChecked={fruitsCoques === "1"}
+                        type="checkbox"
+                        id="fruitsCoques"
+                      />
+                      <label className="mx-2" htmlFor="fruitsCoques">
+                        Fruits à coque
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        defaultChecked={arachide === "1"}
+                        type="checkbox"
+                        id="arachide"
+                      />
+                      <label className="mx-2" htmlFor="arachide">
+                        Arachide
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        defaultChecked={oeuf === "1"}
+                        type="checkbox"
+                        id="oeuf"
+                      />
+                      <label className="mx-2" htmlFor="oeuf">
+                        Oeuf
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        defaultChecked={lait === "1"}
+                        type="checkbox"
+                        id="lait"
+                      />
+                      <label className="mx-2" htmlFor="lait">
+                        Lait
+                      </label>
+                    </div>
+                    <div className="m-2">
+                      <label htmlFor="autre">Autre :</label>
+                      <input
+                        // ref={autreInputRef}
+                        className="mx-2 text-myblack"
+                        type="text"
+                        id="autreAllergie"
+                        defaultValue={isLoggedIn ? autre : ""}
+                      />
+                    </div>
                   </div>
                   <button
                     className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"

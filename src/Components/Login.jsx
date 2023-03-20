@@ -200,9 +200,13 @@ export default function Login() {
                     </button>
                     {!isLoading && (
                       <button
+                        // onClick={() => {
+                        //   setTimeout(() => {
+                        //     window.location.reload();
+                        //   }, 3000);
+                        // }}
                         className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                         type={"submit"}
-                        // onClick={() => setShowModal(false)}
                       >
                         Connexion
                       </button>

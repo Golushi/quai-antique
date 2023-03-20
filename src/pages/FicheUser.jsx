@@ -5,6 +5,7 @@ import AuthContext from "../store/authContext";
 export default function FicheUser({ data }) {
   const authCtx = useContext(AuthContext);
   const [datas, setDatas] = useState([]);
+  const [isCreateFiche, setIsCreateFiche] = useState(false);
 
   const isLoggedIn = authCtx.isLoggedIn;
 
@@ -25,13 +26,11 @@ export default function FicheUser({ data }) {
 
       const controlArrayNotEmpty =
         Array.isArray(dataResponse.results) && dataResponse.results.length;
-
       if (controlArrayNotEmpty) {
         console.log("Tableau rempli");
       } else {
         console.log("Tableau vide");
       }
-
       if (response.ok) {
         // si tableau pas vide
         if (controlArrayNotEmpty) {
@@ -51,9 +50,9 @@ export default function FicheUser({ data }) {
           };
           // envoi dans le state
           setDatas(transformedData);
+          setIsCreateFiche(true);
         } else {
           console.log("fiche n'existe pas");
-          console.log(setDatas);
           //
           const url2 = `http://localhost:4000/api/fiche_user/?userId=${authCtx.userId}`;
           const fetchFicheUserCreateHandler = async () => {
@@ -80,19 +79,11 @@ export default function FicheUser({ data }) {
               const dataResponse2 = await response2.json();
 
               if (response2.ok) {
-                console.log("-------- response2 ok");
-                console.log(response2);
-                console.log(dataResponse2);
+                setIsCreateFiche(true);
               } else {
-                console.log("---------response2 pas ok");
-
-                console.log(response2);
-                console.log(dataResponse2);
                 throw new Error(dataResponse2.error);
               }
             } catch (error) {
-              console.log("dans le catch");
-              console.log(url2);
               console.log(error);
             }
           };
@@ -120,7 +111,9 @@ export default function FicheUser({ data }) {
 
   return (
     <>
-      <UserProfil data={datas} onRefresh={onRefresh} />
+      {isLoggedIn && isCreateFiche && (
+        <UserProfil data={datas} onRefresh={onRefresh} />
+      )}
     </>
   );
 }
