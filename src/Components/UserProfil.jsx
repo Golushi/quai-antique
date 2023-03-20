@@ -233,7 +233,7 @@ export default function UserProfil({ data }) {
                     </div>
                     <div className="text-black">
                       <label
-                        htmlFor="couverts"
+                        htmlFor="Allergies"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Allergies :
