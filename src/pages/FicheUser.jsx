@@ -89,10 +89,6 @@ export default function FicheUser({ data }) {
       console.log(error);
     }
   }, [authCtx.token, url]);
-  //
-  //
-  //
-  //
   // Pour executer la fonction au montage du composant
   useEffect(() => {
     if (isLoggedIn) {
