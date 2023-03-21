@@ -5,9 +5,7 @@ import { Spin as Hamburger } from "hamburger-react";
 import { NavLink } from "react-router-dom";
 
 import Login from "./Login";
-// import UserProfil from "./UserProfil";
 import AuthContext from "../store/authContext";
-// import { onRefresh } from "./UI/utils";
 import logo from "../Assets/Logo/blason_savoie.png";
 import useReadingProgress from "../hooks/useReadingProgress";
 import FicheUser from "../pages/FicheUser";

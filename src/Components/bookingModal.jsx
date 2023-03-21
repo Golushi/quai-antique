@@ -70,7 +70,7 @@ export default function BookingModal(data) {
     const fetchUploadHandler = async () => {
       try {
         const response = await fetch(url, {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             // Authorization: `Bearer ${authCtx.token}`,
@@ -278,6 +278,8 @@ export default function BookingModal(data) {
                     </div>
                   </div>
                   <button
+                    method="POST"
+                    path={`${process.env.REACT_APP_API_URL}/api/booking/`}
                     className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type={"submit"}
                     //  onClick={() => {}}

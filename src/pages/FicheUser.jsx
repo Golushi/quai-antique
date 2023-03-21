@@ -24,17 +24,13 @@ export default function FicheUser({ data }) {
 
       const dataResponse = await response.json();
 
+      // controle tableau plein
       const controlArrayNotEmpty =
         Array.isArray(dataResponse.results) && dataResponse.results.length;
+      // Si tableau es plein
       if (controlArrayNotEmpty) {
         console.log("Tableau rempli");
-      } else {
-        console.log("Tableau vide");
-      }
-      if (response.ok) {
-        // si tableau pas vide
-        if (controlArrayNotEmpty) {
-          // Reformatage donnée
+        if (response.ok) {
           const transformedData = () => {
             return {
               arachide: dataResponse.results[0].fiche_user_arachide,
@@ -51,51 +47,52 @@ export default function FicheUser({ data }) {
           // envoi dans le state
           setDatas(transformedData);
           setIsCreateFiche(true);
-        } else {
-          console.log("fiche n'existe pas");
-          //
-          const url2 = `${process.env.REACT_APP_API_URL}/api/fiche_user/?userId=${authCtx.userId}`;
-          const fetchFicheUserCreateHandler = async () => {
-            try {
-              const fiche_user = {
-                userId: authCtx.userId,
-                nom: "a modif",
-                couverts: 1,
-                fruitsCoques: 0,
-                arachide: 0,
-                oeuf: 0,
-                lait: 0,
-                autre: null,
-              };
-              const response2 = await fetch(url2, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${authCtx.token} `,
-                },
-                body: JSON.stringify({ fiche_user }),
-              });
-
-              const dataResponse2 = await response2.json();
-
-              if (response2.ok) {
-                setIsCreateFiche(true);
-              } else {
-                throw new Error(dataResponse2.error);
-              }
-            } catch (error) {
-              console.log(error);
-            }
-          };
-          fetchFicheUserCreateHandler();
         }
       } else {
-        throw new Error(dataResponse.error);
+        console.log("Tableau vide");
+        console.log("fiche n'existe pas");
+        const url2 = `${process.env.REACT_APP_API_URL}/api/fiche_user/?userId=${authCtx.userId}`;
+        const fetchFicheUserCreateHandler = async () => {
+          try {
+            const fiche_user = {
+              userId: authCtx.userId,
+              nom: "a modif",
+              couverts: 1,
+              fruitsCoques: 0,
+              arachide: 0,
+              oeuf: 0,
+              lait: 0,
+              autre: null,
+            };
+            const response2 = await fetch(url2, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${authCtx.token} `,
+              },
+              body: JSON.stringify({ fiche_user }),
+            });
+            const dataResponse2 = await response2.json();
+
+            if (response2.ok) {
+              setIsCreateFiche(true);
+            } else {
+              throw new Error(dataResponse2.error);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchFicheUserCreateHandler();
       }
     } catch (error) {
       console.log(error);
     }
   }, [authCtx.token, url]);
+  //
+  //
+  //
+  //
   // Pour executer la fonction au montage du composant
   useEffect(() => {
     if (isLoggedIn) {
