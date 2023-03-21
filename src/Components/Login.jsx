@@ -12,10 +12,10 @@ export default function Login() {
   // Utilisation context
   const authCtx = useContext(AuthContext);
 
-  console.log(authCtx);
-
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  console.log(data);
 
   const [error, setError] = useState();
   if (error) {
@@ -51,14 +51,11 @@ export default function Login() {
       return;
     }
 
-    console.log("text");
-    console.log(enteredEmail, enteredPassword);
-
     // Spinner loading
     setIsLoading(true);
 
     // Se connecter, recup userId et token
-    const url = "http://localhost:4000/api/authentification/login";
+    const url = `${process.env.REACT_APP_API_URL}/api/authentification/login`;
 
     const fetchHandler = async () => {
       try {
@@ -100,8 +97,6 @@ export default function Login() {
   const errorhandler = () => {
     setError(null);
   };
-
-  console.log(data);
 
   return (
     <>

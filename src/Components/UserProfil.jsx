@@ -7,8 +7,6 @@ export default function UserProfil({ data }) {
   const [showModal, setShowModal] = useState(false);
 
   const [dataUpdate, setDataUpdate] = useState(data);
-  console.log("dataUpdateeeeeeeeeeeeeeeeeeeeee");
-  console.log(dataUpdate);
 
   const [modification, setModification] = useState(false);
   const authCtx = useContext(AuthContext);
@@ -39,7 +37,6 @@ export default function UserProfil({ data }) {
   // Modif données
   const modificationHandler = () => {
     setModification((modification) => !modification);
-    console.log(modification);
   };
 
   // Pour survveiller les modifs
@@ -77,7 +74,7 @@ export default function UserProfil({ data }) {
 
     const ficheId = dataUpdate.idFiche;
 
-    const url = `http://localhost:4000/api/fiche_user/${ficheId}?userId=${authCtx.userId}`;
+    const url = `${process.env.REACT_APP_API_URL}/api/fiche_user/${ficheId}?userId=${authCtx.userId}`;
     const sendData = dataUpdateSend;
 
     const fetchUploadHandler = async () => {
@@ -94,12 +91,9 @@ export default function UserProfil({ data }) {
 
         if (response.ok) {
           console.log("*********** RESPONSE.OK ************");
-          console.log(response);
-          console.log(dataResponse);
         } else {
           console.log("*********** RESPONSE.PAS OK ************");
-          console.log(response);
-          console.log(dataResponse);
+
           throw new Error(dataResponse.error);
         }
       } catch (error) {
@@ -124,10 +118,6 @@ export default function UserProfil({ data }) {
   sessionStorage.setItem("oeuf", oeuf);
   sessionStorage.setItem("userId", data.userId);
   sessionStorage.setItem("idFiche", data.idFiche);
-
-  console.log("TTTTTTTTTTTTTTTTTTTTTTTTT");
-  console.log(data.idFiche);
-  console.log(data.userId);
 
   return (
     <>
@@ -169,13 +159,6 @@ export default function UserProfil({ data }) {
                   <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                     Paramètres
                   </h3>
-                  {/* {error && (
-                    <ErrorModal
-                      title={error.title}
-                      message={error.message}
-                      onConfirm={errorhandler}
-                    />
-                  )} */}
                   <form
                     // onSubmit={submitHandler}
                     className="space-y-6"

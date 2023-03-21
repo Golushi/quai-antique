@@ -1,12 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import ReservationTimePicker from "../hooks/ReservationTimepicker";
 
 import AuthContext from "../store/authContext";
 
-export default function BookingModal() {
+export default function BookingModal(data) {
   const [showForm, setShowForm] = useState(false);
+
+  const [dataUpdate, setDataUpdate] = useState(data);
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const dateReservationInputRef = useRef();
+  const heureReservationInputRef = useRef();
+
+  // Mettre a jour dataUpdates
+  useEffect(() => {
+    setDataUpdate(data);
+  }, [data]);
+
+  const dateReservation = dataUpdate.dateReservation;
+  const heureReservation = dataUpdate.dateReservation;
 
   const nom = sessionStorage.getItem("nom");
   const couverts = sessionStorage.getItem("couverts");
@@ -15,17 +30,90 @@ export default function BookingModal() {
   const oeuf = sessionStorage.getItem("oeuf");
   const lait = sessionStorage.getItem("lait");
   const autre = sessionStorage.getItem("autre");
-  console.log("LAIT");
-  console.log(lait);
-  console.log("OEUF");
-  console.log(oeuf);
+
+  const changeHandler = () => {
+    const enteredDateReservation = dateReservationInputRef.current.value;
+    const enteredHeureReservation = heureReservationInputRef.current.value;
+
+    setDataUpdate({
+      ...dataUpdate,
+      dateReservation: enteredDateReservation,
+      heureReservation: enteredHeureReservation,
+    });
+
+    const dataUpdateSend = {
+      nom: nom,
+      couverts: couverts,
+      dateReservation: enteredDateReservation,
+      heureReservation: enteredHeureReservation,
+      arachide: arachide,
+      fruitsCoques: fruitsCoques,
+      oeuf: oeuf,
+      lait: lait,
+      autre: autre,
+    };
+
+    console.log(dataUpdateSend);
+    console.log(nom);
+    console.log(couverts);
+    console.log(dateReservation);
+    console.log(heureReservation);
+    console.log(arachide);
+    console.log(fruitsCoques);
+    console.log(oeuf);
+    console.log(lait);
+    console.log(autre);
+
+    const url = `${process.env.REACT_APP_API_URL}/api/booking/`;
+    //const sendData = dataUpdateSend;
+
+    const fetchUploadHandler = async () => {
+      try {
+        const response = await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${authCtx.token}`,
+          },
+          //body: JSON.stringify(sendData),
+          body: JSON.stringify({
+            nom: "jean",
+            couverts: "4",
+            dateReservation: "2023-03-22",
+            heureReservation: "12:15",
+            fruitsCoques: "1",
+            arachide: "1",
+            oeuf: "0",
+            lait: "1",
+            autre: null,
+          }),
+        });
+        const dataResponse = await response.json();
+
+        if (response.ok) {
+          console.log("*********** RESPONSE.OK ************");
+          console.log(Response.OK);
+        } else {
+          console.log("*********** RESPONSE.PAS OK ************");
+          console.log(response.ok);
+
+          throw new Error(dataResponse.error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUploadHandler();
+  };
+
+  // Mettre a jour dataUpdates
+  useEffect(() => {
+    setDataUpdate(data);
+  }, [data]);
 
   const openForm = () => {
     setShowForm(true);
   };
-
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
 
   return (
     <>
@@ -111,6 +199,8 @@ export default function BookingModal() {
                     <input
                       type="date"
                       name="field1"
+                      ref={dateReservationInputRef}
+                      // onChange={changeHandler}
                       id="field1"
                       placeholder=""
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -124,7 +214,10 @@ export default function BookingModal() {
                     >
                       Heures
                     </label>
-                    <ReservationTimePicker />
+                    <ReservationTimePicker
+                    // onChange={changeHandler}
+                    // ref={heureReservationInputRef}
+                    />
                   </div>
                   <div className="text-white">
                     <label

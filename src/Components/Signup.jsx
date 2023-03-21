@@ -57,7 +57,7 @@ export default function Signup() {
     setIsLoading(true);
 
     // Se connecter, recup userId et token
-    const url = "http://localhost:4000/api/authentification/signup";
+    const url = `${process.env.REACT_APP_API_URL}/api/authentification/signup`;
 
     const fetchHandler = async () => {
       try {

@@ -10,7 +10,7 @@ export default function FicheUser({ data }) {
   const isLoggedIn = authCtx.isLoggedIn;
 
   // Requete acces ressources proteger
-  const url = `http://localhost:4000/api/fiche_user/fiche/?userId=${authCtx.userId}`;
+  const url = `${process.env.REACT_APP_API_URL}/api/fiche_user/fiche/?userId=${authCtx.userId}`;
 
   const fetchHandler = useCallback(async () => {
     try {
@@ -54,7 +54,7 @@ export default function FicheUser({ data }) {
         } else {
           console.log("fiche n'existe pas");
           //
-          const url2 = `http://localhost:4000/api/fiche_user/?userId=${authCtx.userId}`;
+          const url2 = `${process.env.REACT_APP_API_URL}/api/fiche_user/?userId=${authCtx.userId}`;
           const fetchFicheUserCreateHandler = async () => {
             try {
               const fiche_user = {

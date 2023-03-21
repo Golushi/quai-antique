@@ -8,6 +8,7 @@ import Navbar from "../Components/Navbar";
 import OpeningHours from "../Components/OpeningHours";
 import ScrollToTop from "../Components/ScrollToTop";
 import BookingModal from "../Components/BookingModal";
+import AdminButton from "../Components/UI/AdminButton";
 
 export default function Home() {
   window.scrollTo(0, 0);
@@ -15,6 +16,7 @@ export default function Home() {
     <div id="App" className="App">
       <Navbar />
       <BookingModal />
+      <AdminButton />
       <Header />
       <About />
       <Menus />

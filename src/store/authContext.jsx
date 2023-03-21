@@ -46,7 +46,7 @@ export const AuthContextProvider = (props) => {
 
   // Si token = logge + convertir token en boolean
   const userIsLoggedIn = !!token;
-  console.log(userIsLoggedIn);
+  //console.log(userIsLoggedIn);
 
   // Context value
   const contextValue = {
@@ -56,9 +56,6 @@ export const AuthContextProvider = (props) => {
     login: loginHandler,
     logout: logoutHandler,
   };
-
-  console.log("+++++++++++++++++++++++++++++++++++++++++++++++");
-  console.log(defaultValue);
 
   return (
     <AuthContext.Provider value={contextValue}>
