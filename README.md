@@ -4,7 +4,7 @@ Le site du restaurant est disponible en ligne ici : [Quai Antique](https://golus
 
 Installation
 
-    Clonez le projet depuis GitHub : git clone https://github.com/votre-nom-de-projet
+    Clonez le projet depuis GitHub : git clone https://github.com/Golushi/quai-antique
     Installez les dépendances : npm install
 
 Utilisation
