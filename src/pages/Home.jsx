@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 import About from "../Components/About";
 import Footer from "../Components/Footer";
@@ -11,7 +11,10 @@ import BookingModal from "../Components/BookingModal";
 import AdminButton from "../Components/UI/AdminButton";
 
 export default function Home() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div id="App" className="App">
       <Navbar />

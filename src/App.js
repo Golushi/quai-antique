@@ -10,8 +10,8 @@ export default function App() {
       <AuthContextProvider>
         <Routes>
           <Route exact path="/quai-antique" element={<Home />} />
-          <Route exact path="/Carte" element={<Carte />} />
-          <Route exact path="/Admin" element={<Admin />} />
+          <Route exact path="/carte" element={<Carte />} />
+          <Route exact path="/admin" element={<Admin />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </AuthContextProvider>

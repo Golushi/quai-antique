@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import ReservationTimePicker from "../hooks/ReservationTimepicker";
+// import ReservationTimePicker from "../hooks/ReservationTimepicker";
 
 import AuthContext from "../store/authContext";
 
@@ -14,14 +14,13 @@ export default function BookingModal(data) {
 
   const dateReservationInputRef = useRef();
   const heureReservationInputRef = useRef();
-
-  // Mettre a jour dataUpdates
-  useEffect(() => {
-    setDataUpdate(data);
-  }, [data]);
-
-  const dateReservation = dataUpdate.dateReservation;
-  const heureReservation = dataUpdate.dateReservation;
+  const nomInputRef = useRef();
+  const couvertsInputRef = useRef();
+  const arachideInputRef = useRef();
+  const autreInputRef = useRef();
+  const fruitsCoquesInputRef = useRef();
+  const laitInputRef = useRef();
+  const oeufInputRef = useRef();
 
   const nom = sessionStorage.getItem("nom");
   const couverts = sessionStorage.getItem("couverts");
@@ -31,41 +30,59 @@ export default function BookingModal(data) {
   const lait = sessionStorage.getItem("lait");
   const autre = sessionStorage.getItem("autre");
 
-  const changeHandler = () => {
+  // Mettre a jour dataUpdates
+  useEffect(() => {
+    setDataUpdate(data);
+  }, [data]);
+
+  const changeHandler = (event) => {
+    event.preventDefault();
+
     const enteredDateReservation = dateReservationInputRef.current.value;
     const enteredHeureReservation = heureReservationInputRef.current.value;
+    const enteredNom = isLoggedIn ? nom : nomInputRef.current.value;
+    const enteredCouverts = couvertsInputRef.current.value;
+    const enteredArachide = arachideInputRef.current.defaultChecked ? 1 : 0;
+    const enteredAutre = autreInputRef.current.value;
+    const enteredFruitsCoques = fruitsCoquesInputRef.current.defaultChecked
+      ? 1
+      : 0;
+    const enteredLait = laitInputRef.current.defaultChecked ? 1 : 0;
+    const enteredOeuf = oeufInputRef.current.defaultChecked ? 1 : 0;
+
+    const dateReservation = dataUpdate.dateReservation;
+    const heureReservation = dataUpdate.dateReservation;
 
     setDataUpdate({
       ...dataUpdate,
       dateReservation: enteredDateReservation,
       heureReservation: enteredHeureReservation,
+      nom: enteredNom,
+      couverts: enteredCouverts,
+      arachide: enteredArachide,
+      autre: enteredAutre,
+      fruitsCoques: enteredFruitsCoques,
+      lait: enteredLait,
+      oeuf: enteredOeuf,
     });
 
     const dataUpdateSend = {
-      nom: nom,
-      couverts: couverts,
+      nom: enteredNom,
+      couverts: enteredCouverts,
       dateReservation: enteredDateReservation,
       heureReservation: enteredHeureReservation,
-      arachide: arachide,
-      fruitsCoques: fruitsCoques,
-      oeuf: oeuf,
-      lait: lait,
-      autre: autre,
+      arachide: enteredArachide,
+      fruitsCoques: enteredFruitsCoques,
+      oeuf: enteredOeuf,
+      lait: enteredLait,
+      autre: enteredAutre,
     };
 
-    console.log(dataUpdateSend);
-    console.log(nom);
-    console.log(couverts);
-    console.log(dateReservation);
-    console.log(heureReservation);
-    console.log(arachide);
-    console.log(fruitsCoques);
-    console.log(oeuf);
-    console.log(lait);
-    console.log(autre);
-
     const url = `${process.env.REACT_APP_API_URL}/api/booking/`;
-    //const sendData = dataUpdateSend;
+    const sendData = dataUpdateSend;
+
+    console.log("sendData______________");
+    console.log(sendData);
 
     const fetchUploadHandler = async () => {
       try {
@@ -73,26 +90,14 @@ export default function BookingModal(data) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${authCtx.token}`,
           },
-          //body: JSON.stringify(sendData),
-          body: JSON.stringify({
-            nom: "jean",
-            couverts: "4",
-            dateReservation: "2023-03-22",
-            heureReservation: "12:15",
-            fruitsCoques: "1",
-            arachide: "1",
-            oeuf: "0",
-            lait: "1",
-            autre: null,
-          }),
+          body: JSON.stringify(sendData),
         });
         const dataResponse = await response.json();
 
         if (response.ok) {
           console.log("*********** RESPONSE.OK ************");
-          console.log(Response.OK);
+          console.log(response.OK);
         } else {
           console.log("*********** RESPONSE.PAS OK ************");
           console.log(response.ok);
@@ -156,7 +161,7 @@ export default function BookingModal(data) {
                   Reservation <br />
                   {isLoggedIn ? nom : "Visiteur"}
                 </h3>
-                <form className="space-y-6" action="#">
+                <form className="space-y-6" onSubmit={changeHandler} action="#">
                   {!isLoggedIn && (
                     <div>
                       <label
@@ -168,6 +173,7 @@ export default function BookingModal(data) {
                       <input
                         type=""
                         name=""
+                        ref={nomInputRef}
                         id="name"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         required
@@ -183,6 +189,7 @@ export default function BookingModal(data) {
                     </label>
                     <input
                       id="couverts2"
+                      ref={couvertsInputRef}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       placeholder="Entre 1 et 20"
                       defaultValue={isLoggedIn ? couverts : ""}
@@ -214,10 +221,31 @@ export default function BookingModal(data) {
                     >
                       Heures
                     </label>
-                    <ReservationTimePicker
+                    <select
+                      id="time-input"
+                      ref={heureReservationInputRef}
+                      name="time-input"
+                    >
+                      <option value="12:00">12h00</option>
+                      <option value="12:00">12h15</option>
+                      <option value="12:30">12h30</option>
+                      <option value="12:30">12h45</option>
+                      <option value="19:00">13h00</option>
+                      <option value="19:00">13h15</option>
+                      <option value="19:00">13h30</option>
+                      <option value="19:00">19h00</option>
+                      <option value="19:30">19h30</option>
+                      <option value="20:00">20h00</option>
+                      <option value="20:30">20h30</option>
+                      <option value="21:00">21h00</option>
+                      <option value="21:30">21h30</option>
+                      <option value="22:00">22h00</option>
+                      <option value="22:30">22h30</option>
+                    </select>
+                    {/* <ReservationTimePicker
                     // onChange={changeHandler}
                     // ref={heureReservationInputRef}
-                    />
+                    /> */}
                   </div>
                   <div className="text-white">
                     <label
@@ -230,6 +258,7 @@ export default function BookingModal(data) {
                       <input
                         defaultChecked={fruitsCoques === "1"}
                         type="checkbox"
+                        ref={fruitsCoquesInputRef}
                         id="fruitsCoques"
                       />
                       <label className="mx-2" htmlFor="fruitsCoques">
@@ -238,6 +267,7 @@ export default function BookingModal(data) {
                     </div>
                     <div>
                       <input
+                        ref={arachideInputRef}
                         defaultChecked={arachide === "1"}
                         type="checkbox"
                         id="arachide"
@@ -250,6 +280,7 @@ export default function BookingModal(data) {
                       <input
                         defaultChecked={oeuf === "1"}
                         type="checkbox"
+                        ref={oeufInputRef}
                         id="oeuf"
                       />
                       <label className="mx-2" htmlFor="oeuf">
@@ -260,6 +291,7 @@ export default function BookingModal(data) {
                       <input
                         defaultChecked={lait === "1"}
                         type="checkbox"
+                        ref={laitInputRef}
                         id="lait"
                       />
                       <label className="mx-2" htmlFor="lait">
@@ -269,7 +301,7 @@ export default function BookingModal(data) {
                     <div className="m-2">
                       <label htmlFor="autre">Autre :</label>
                       <input
-                        // ref={autreInputRef}
+                        ref={autreInputRef}
                         className="mx-2 text-myblack"
                         type="text"
                         id="autreAllergie"
@@ -282,7 +314,7 @@ export default function BookingModal(data) {
                     path={`${process.env.REACT_APP_API_URL}/api/booking/`}
                     className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type={"submit"}
-                    //  onClick={() => {}}
+                    onClick={() => {}}
                   >
                     Valider
                   </button>

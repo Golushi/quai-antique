@@ -106,7 +106,7 @@ export default function UserProfil({ data }) {
   // Requete GET
 
   useEffect(() => {
-    // onRefresh();
+    onRefresh();
   }, [modification]);
 
   sessionStorage.setItem("nom", nom);
