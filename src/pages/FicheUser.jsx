@@ -6,13 +6,20 @@ export default function FicheUser({ data }) {
   const authCtx = useContext(AuthContext);
   const [datas, setDatas] = useState([]);
   const [isCreateFiche, setIsCreateFiche] = useState(false);
+  const [nom, setNom] = useState("");
+  const [couverts, setCouverts] = useState("");
+
+  useEffect(() => {
+    setNom(sessionStorage.getItem("name") || "");
+    setCouverts(sessionStorage.getItem("couverts") || "");
+  }, []);
 
   const isLoggedIn = authCtx.isLoggedIn;
 
-  // Requete acces ressources proteger
-  const url = `${process.env.REACT_APP_API_URL}/api/fiche_user/fiche/?userId=${authCtx.userId}`;
-
   const fetchHandler = useCallback(async () => {
+    // Requete acces ressources proteger
+    const url = `${process.env.REACT_APP_API_URL}/api/fiche_user/fiche/?userId=${authCtx.userId}`;
+
     try {
       const response = await fetch(url, {
         method: "GET",
@@ -45,50 +52,44 @@ export default function FicheUser({ data }) {
             };
           };
           // envoi dans le state
-          setDatas(transformedData);
-          setIsCreateFiche(true);
+          if (datas.length === 0) {
+            setDatas(transformedData);
+            console.log(datas.length);
+            setIsCreateFiche(true);
+          }
         }
       } else {
         console.log("Tableau vide");
         console.log("fiche n'existe pas");
         const url2 = `${process.env.REACT_APP_API_URL}/api/fiche_user/?userId=${authCtx.userId}`;
-        const fetchFicheUserCreateHandler = async () => {
-          try {
-            const fiche_user = {
-              userId: authCtx.userId,
-              nom: "a modif",
-              couverts: 1,
-              fruitsCoques: 0,
-              arachide: 0,
-              oeuf: 0,
-              lait: 0,
-              autre: null,
-            };
-            const response2 = await fetch(url2, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${authCtx.token} `,
-              },
-              body: JSON.stringify({ fiche_user }),
-            });
-            const dataResponse2 = await response2.json();
-
-            if (response2.ok) {
-              setIsCreateFiche(true);
-            } else {
-              throw new Error(dataResponse2.error);
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        fetchFicheUserCreateHandler();
+        try {
+          const fiche_user = {
+            userId: authCtx.userId,
+            nom: nom,
+            couverts: couverts,
+            fruitsCoques: 0,
+            arachide: 0,
+            oeuf: 0,
+            lait: 0,
+            autre: "",
+          };
+          await fetch(url2, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authCtx.token} `,
+            },
+            body: JSON.stringify({ fiche_user }),
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
     }
-  }, [authCtx.token, url]);
+  }, [authCtx.token, authCtx.userId, couverts, datas.length, nom]);
   // Pour executer la fonction au montage du composant
   useEffect(() => {
     if (isLoggedIn) {
@@ -99,8 +100,6 @@ export default function FicheUser({ data }) {
   const onRefresh = () => {
     fetchHandler();
   };
-
-  datas.autre = datas.autre === null ? "" : datas.autre;
 
   return (
     <>

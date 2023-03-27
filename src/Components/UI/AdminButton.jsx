@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../store/authContext";
 
@@ -6,17 +6,9 @@ export default function AdminButton() {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
 
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    if (authCtx.userId === 56) {
-      setCurrentUser(authCtx.userId);
-    }
-  }, [authCtx.userId]);
-
   return (
     <>
-      {isLoggedIn && currentUser && (
+      {isLoggedIn && authCtx.userId === "56" && (
         <NavLink to="/Admin" className="">
           <div className="fixed z-20 top-[130px] right-[20px] pl-4 flex">
             <button

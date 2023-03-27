@@ -10,6 +10,7 @@ export default function Signup() {
   const couvertsInputRef = useRef();
 
   const [data, setData] = useState();
+  console.log(data);
   const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState();
@@ -24,6 +25,9 @@ export default function Signup() {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     const enteredCouverts = couvertsInputRef.current.value;
+
+    sessionStorage.setItem("name", enteredName);
+    sessionStorage.setItem("couverts", enteredCouverts);
 
     // Restriction case vide
     if (
@@ -49,9 +53,6 @@ export default function Signup() {
       });
       return;
     }
-
-    console.log("text");
-    console.log(enteredEmail, enteredPassword);
 
     // Spinner loading
     setIsLoading(true);
@@ -79,6 +80,7 @@ export default function Signup() {
         setShowModal(false);
         if (response.ok) {
           setData(dataResponse);
+          alert("Le compte a été créé avec succès!");
         } else {
           setError({
             title: "Authentification Echec",
@@ -110,8 +112,6 @@ export default function Signup() {
   const errorhandler = () => {
     setError(null);
   };
-
-  console.log(data);
 
   return (
     <>

@@ -15,7 +15,6 @@ const AuthContext = createContext(defaultValue);
 // Controle presence token dans local storage
 const tokenLocalStorage = localStorage.getItem("token");
 const userIdLocalStorage = localStorage.getItem("userId");
-// const ficheIdLocalStorage = localStorage.getItem("id_fiche_user");
 
 // Context provider
 export const AuthContextProvider = (props) => {

@@ -49,9 +49,6 @@ export default function BookingModal(data) {
     const enteredLait = laitInputRef.current.defaultChecked ? 1 : 0;
     const enteredOeuf = oeufInputRef.current.defaultChecked ? 1 : 0;
 
-    const dateReservation = dataUpdate.dateReservation;
-    const heureReservation = dataUpdate.dateReservation;
-
     setDataUpdate({
       ...dataUpdate,
       dateReservation: enteredDateReservation,
@@ -97,6 +94,8 @@ export default function BookingModal(data) {
         if (response.ok) {
           console.log("*********** RESPONSE.OK ************");
           console.log(response.OK);
+          alert("Votre réservation à bien été prise en compte!");
+          setShowForm(false);
         } else {
           console.log("*********** RESPONSE.PAS OK ************");
           console.log(response.ok);
@@ -241,10 +240,6 @@ export default function BookingModal(data) {
                       <option value="22:00">22h00</option>
                       <option value="22:30">22h30</option>
                     </select>
-                    {/* <ReservationTimePicker
-                    // onChange={changeHandler}
-                    // ref={heureReservationInputRef}
-                    /> */}
                   </div>
                   <div className="text-white">
                     <label
@@ -313,7 +308,6 @@ export default function BookingModal(data) {
                     path={`${process.env.REACT_APP_API_URL}/api/booking/`}
                     className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type={"submit"}
-                    onClick={() => {}}
                   >
                     Valider
                   </button>

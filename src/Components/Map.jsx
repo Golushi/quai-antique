@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default function Map() {
   return (
@@ -9,7 +9,7 @@ export default function Map() {
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
       title="Google Maps"
-      className='w-[150px] h-[112.5px] xs:w-[300px] xs:h-[225px] sm:w-[600px] sm:h-[450px] object-cover overflow-hidden my-5'
+      className="w-[150px] h-[112.5px] xs:w-[300px] xs:h-[225px] sm:w-[600px] sm:h-[450px] object-cover overflow-hidden my-5"
     ></iframe>
-  )
+  );
 }
