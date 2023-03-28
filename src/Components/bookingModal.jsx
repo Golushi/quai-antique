@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import AuthContext from "../store/authContext";
-// import ReservationTimePicker from "../hooks/ReservationTimepicker";
 
 export default function BookingModal(data) {
   const [showForm, setShowForm] = useState(false);
