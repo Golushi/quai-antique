@@ -128,7 +128,6 @@ export default function BookingModal(data) {
           Réserver
         </button>
       </div>
-
       {showForm && (
         <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
           <div className="relative w-auto h-auto max-w-md md:h-auto">
