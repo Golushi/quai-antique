@@ -98,6 +98,9 @@ export default function BookingModal(data) {
         } else {
           console.log("*********** RESPONSE.PAS OK ************");
           console.log(response.ok);
+          alert(
+            "Il semblerait qu'une erreur s'est produite sur votre réservation!"
+          );
 
           throw new Error(dataResponse.error);
         }
