@@ -87,7 +87,7 @@ export default function UserProfil({ data }) {
           },
           body: JSON.stringify(sendData),
         });
-        const dataResponse = await response.json();
+        const dataResponse = response.json();
 
         if (response.ok) {
           console.log("*********** RESPONSE.OK ************");
@@ -106,7 +106,7 @@ export default function UserProfil({ data }) {
   // Requete GET
 
   useEffect(() => {
-    // onRefresh();
+    onRefresh();
   }, [modification]);
 
   sessionStorage.setItem("nom", nom);
