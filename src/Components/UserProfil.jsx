@@ -85,7 +85,6 @@ export default function UserProfil({ data }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${authCtx.token}`,
           },
-          mode: "no-cors",
           body: JSON.stringify(sendData),
         });
         const dataResponse = await response.json();
