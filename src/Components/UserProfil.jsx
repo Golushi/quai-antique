@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../store/authContext";
 import Spinner from "./UI/Spinner";
-import onRefresh from "./UI/Utils";
 
 export default function UserProfil({ data }) {
   const [showModal, setShowModal] = useState(false);
@@ -106,7 +105,7 @@ export default function UserProfil({ data }) {
   // Requete GET
 
   useEffect(() => {
-    onRefresh();
+    //onRefresh();
   }, [modification]);
 
   sessionStorage.setItem("nom", nom);
