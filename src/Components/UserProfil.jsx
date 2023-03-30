@@ -105,7 +105,31 @@ export default function UserProfil({ data }) {
   // Requete GET
 
   useEffect(() => {
-    //onRefresh();
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/fiche_user/${data.idFiche}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authCtx.token}`,
+            },
+          }
+        );
+        const dataResponse = await response.json();
+
+        if (response.ok) {
+          setDataUpdate(dataResponse);
+        } else {
+          throw new Error(dataResponse.error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }, [modification]);
 
   sessionStorage.setItem("nom", nom);
