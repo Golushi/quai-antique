@@ -9,10 +9,10 @@ export default function App() {
     <BrowserRouter id="App" className="App">
       <AuthContextProvider>
         <Routes>
-          <Route exact path="/quai-antique" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/carte" element={<Carte />} />
           <Route exact path="/admin" element={<Admin />} />
-          <Route path="/carte/*" element={<Navigate to="/Carte" />} />
+          <Route path="/carte/*" element={<Navigate to="/" />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </AuthContextProvider>
