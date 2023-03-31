@@ -7,7 +7,7 @@ import raclette from "../Assets/Carte/raclette.jpg";
 export default function Carte() {
   return (
     <div className="w-screen h-screen bg-white">
-      <div className="flex justify-center items-center py-3 shadow-lg">
+      <div className="flex fixed top-0 justify-center items-center py-3 shadow-lg">
         <NavLink
           to="/quai-antique"
           className={(nav) => (nav.isActive ? "nav-active" : "")}
