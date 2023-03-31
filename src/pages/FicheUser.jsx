@@ -56,9 +56,9 @@ export default function FicheUser({ data }) {
             setDatas(transformedData);
             console.log(datas.length);
             setIsCreateFiche(true);
+            window.location.reload();
           }
         }
-        window.location.reload();
       } else {
         console.log("Tableau vide");
         console.log("fiche n'existe pas");
