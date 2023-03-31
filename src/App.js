@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Carte from "./pages/Carte";
 import Admin from "./pages/Admin";
@@ -12,7 +12,6 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/carte" element={<Carte />} />
           <Route exact path="/admin" element={<Admin />} />
-          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>
