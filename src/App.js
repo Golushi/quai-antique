@@ -12,6 +12,7 @@ export default function App() {
           <Route exact path="/quai-antique" element={<Home />} />
           <Route exact path="/carte" element={<Carte />} />
           <Route exact path="/admin" element={<Admin />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>
