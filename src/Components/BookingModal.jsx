@@ -246,13 +246,17 @@ export default function BookingModal(data) {
                     >
                       Allergies :
                     </label>
-                    <div className="">
-                      <input
-                        defaultChecked={fruitsCoques === "1"}
-                        type="checkbox"
-                        ref={fruitsCoquesInputRef}
-                        id="fruitsCoques"
-                      />
+                    <div>
+                      {isLoggedIn ? (
+                        <input
+                          defaultChecked={fruitsCoques === "1"}
+                          type="checkbox"
+                          ref={fruitsCoquesInputRef}
+                          id="fruitsCoques"
+                        />
+                      ) : (
+                        <input type="checkbox" id="fruitsCoques" />
+                      )}
                       <label className="mx-2" htmlFor="fruitsCoques">
                         Fruits à coque
                       </label>
