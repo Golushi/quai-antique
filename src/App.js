@@ -10,7 +10,7 @@ export default function App() {
       <AuthContextProvider>
         <Routes>
           <Route exact path="/quai-antique" element={<Home />} />
-          <Route exact path="/carte" element={<Carte />} />
+          <Route exact path="/" element={<Carte />} />
           <Route exact path="/admin" element={<Admin />} />
           {/* <Route path="/carte/*" element={<Navigate to="/Carte" />} /> */}
           <Route path="*" element={<Home />} />
