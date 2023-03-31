@@ -84,11 +84,11 @@ export default function FicheUser({ data }) {
         } catch (error) {
           console.log(error);
         }
-        window.location.reload();
       }
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   }, [authCtx.token, authCtx.userId, couverts, datas.length, nom]);
   // Pour executer la fonction au montage du composant
   useEffect(() => {
