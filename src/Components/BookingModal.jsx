@@ -33,81 +33,84 @@ export default function BookingModal(data) {
     setDataUpdate(data);
   }, [data]);
 
-  const changeHandler = (event) => {
-    event.preventDefault();
+  // const changeHandler = (event) => {
+  //   event.preventDefault();
 
-    const enteredDateReservation = dateReservationInputRef.current.value;
-    const enteredHeureReservation = heureReservationInputRef.current.value;
-    const enteredNom = isLoggedIn ? nom : nomInputRef.current.value;
-    const enteredCouverts = couvertsInputRef.current.value;
-    const enteredArachide = arachideInputRef.current.defaultChecked ? 1 : 0;
-    const enteredAutre = autreInputRef.current.value;
-    const enteredFruitsCoques = fruitsCoquesInputRef.current.defaultChecked
-      ? 1
-      : 0;
-    const enteredLait = laitInputRef.current.defaultChecked ? 1 : 0;
-    const enteredOeuf = oeufInputRef.current.defaultChecked ? 1 : 0;
+  const enteredDateReservation = dateReservationInputRef.current.value;
+  const enteredHeureReservation = heureReservationInputRef.current.value;
+  const enteredNom = isLoggedIn ? nom : nomInputRef.current.value;
+  const enteredCouverts = couvertsInputRef.current.value;
+  const enteredArachide = arachideInputRef.current.defaultChecked ? 1 : 0;
+  const enteredAutre = autreInputRef.current.value;
+  const enteredFruitsCoques = fruitsCoquesInputRef.current.defaultChecked
+    ? 1
+    : 0;
+  const enteredLait = laitInputRef.current.defaultChecked ? 1 : 0;
+  const enteredOeuf = oeufInputRef.current.defaultChecked ? 1 : 0;
 
-    setDataUpdate({
-      ...dataUpdate,
-      dateReservation: enteredDateReservation,
-      heureReservation: enteredHeureReservation,
-      nom: enteredNom,
-      couverts: enteredCouverts,
-      arachide: enteredArachide,
-      autre: enteredAutre,
-      fruitsCoques: enteredFruitsCoques,
-      lait: enteredLait,
-      oeuf: enteredOeuf,
-    });
+  setDataUpdate({
+    ...dataUpdate,
+    dateReservation: enteredDateReservation,
+    heureReservation: enteredHeureReservation,
+    nom: enteredNom,
+    couverts: enteredCouverts,
+    arachide: enteredArachide,
+    autre: enteredAutre,
+    fruitsCoques: enteredFruitsCoques,
+    lait: enteredLait,
+    oeuf: enteredOeuf,
+  });
 
-    const dataUpdateSend = {
-      nom: enteredNom,
-      couverts: enteredCouverts,
-      dateReservation: enteredDateReservation,
-      heureReservation: enteredHeureReservation,
-      arachide: enteredArachide,
-      fruitsCoques: enteredFruitsCoques,
-      oeuf: enteredOeuf,
-      lait: enteredLait,
-      autre: enteredAutre,
-    };
+  const dataUpdateSend = {
+    nom: enteredNom,
+    couverts: enteredCouverts,
+    dateReservation: enteredDateReservation,
+    heureReservation: enteredHeureReservation,
+    arachide: enteredArachide,
+    fruitsCoques: enteredFruitsCoques,
+    oeuf: enteredOeuf,
+    lait: enteredLait,
+    autre: enteredAutre,
+  };
 
-    const url = `${process.env.REACT_APP_API_URL}/api/booking/`;
-    const sendData = dataUpdateSend;
+  const url = `${process.env.REACT_APP_API_URL}/api/booking/`;
+  const sendData = dataUpdateSend;
 
-    console.log("sendData______________");
-    console.log(sendData);
+  console.log("sendData______________");
+  console.log(sendData);
 
-    const fetchUploadHandler = async () => {
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sendData),
-        });
-        const dataResponse = await response.json();
+  const fetchUploadHandler = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sendData),
+      });
+      const dataResponse = await response.json();
 
-        if (response.ok) {
-          console.log("*********** RESPONSE.OK ************");
-          console.log(response.OK);
-          alert("Votre réservation à bien été prise en compte!");
-          setShowForm(false);
-        } else {
-          console.log("*********** RESPONSE.PAS OK ************");
-          console.log(response.ok);
-          alert(
-            "Il semblerait qu'une erreur s'est produite sur votre réservation!"
-          );
+      if (response.ok) {
+        console.log("*********** RESPONSE.OK ************");
+        console.log(response.OK);
+        alert("Votre réservation à bien été prise en compte!");
+        setShowForm(false);
+      } else {
+        console.log("*********** RESPONSE.PAS OK ************");
+        console.log(response.ok);
+        alert(
+          "Il semblerait qu'une erreur s'est produite sur votre réservation!"
+        );
 
-          throw new Error(dataResponse.error);
-        }
-      } catch (error) {
-        console.log(error);
+        throw new Error(dataResponse.error);
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //};
+  const handleSubmit = (event) => {
+    event.preventDefault();
     fetchUploadHandler();
   };
 
@@ -160,7 +163,7 @@ export default function BookingModal(data) {
                   Reservation <br />
                   {isLoggedIn ? nom : "Visiteur"}
                 </h3>
-                <form className="space-y-6" onSubmit={changeHandler} action="#">
+                <form className="space-y-6" onSubmit={handleSubmit} action="#">
                   {!isLoggedIn && (
                     <div>
                       <label
