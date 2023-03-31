@@ -89,7 +89,6 @@ export default function BookingModal(data) {
           body: JSON.stringify(sendData),
         });
         const dataResponse = await response.json();
-
         if (response.ok) {
           console.log("*********** RESPONSE.OK ************");
           console.log(response.OK);
@@ -101,7 +100,6 @@ export default function BookingModal(data) {
           alert(
             "Il semblerait qu'une erreur s'est produite sur votre réservation!"
           );
-
           throw new Error(dataResponse.error);
         }
       } catch (error) {
