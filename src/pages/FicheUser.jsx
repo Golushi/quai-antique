@@ -8,7 +8,6 @@ export default function FicheUser({ data }) {
   const [isCreateFiche, setIsCreateFiche] = useState(false);
   const [nom, setNom] = useState("");
   const [couverts, setCouverts] = useState("");
-  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     setNom(sessionStorage.getItem("name") || "");
@@ -85,7 +84,7 @@ export default function FicheUser({ data }) {
         } catch (error) {
           console.log(error);
         }
-        setRefresh(true);
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -95,12 +94,12 @@ export default function FicheUser({ data }) {
   useEffect(() => {
     if (isLoggedIn) {
       fetchHandler();
+      window.location.reload();
     }
-  }, [fetchHandler, isLoggedIn, refresh]);
+  }, [fetchHandler, isLoggedIn]);
 
   const onRefresh = () => {
     fetchHandler();
-    setRefresh(false);
   };
 
   return (
