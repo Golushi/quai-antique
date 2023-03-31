@@ -88,7 +88,7 @@ export default function Navbar() {
                 onClick={toggle}
               >
                 <NavLink
-                  to="/carte"
+                  to="/Carte"
                   className={(nav) => (nav.isActive ? "nav-active" : "")}
                 >
                   Carte
