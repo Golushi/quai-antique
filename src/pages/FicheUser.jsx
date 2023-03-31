@@ -56,7 +56,6 @@ export default function FicheUser({ data }) {
             setDatas(transformedData);
             console.log(datas.length);
             setIsCreateFiche(true);
-            window.location.reload();
           }
         }
       } else {
