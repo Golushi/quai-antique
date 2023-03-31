@@ -108,7 +108,6 @@ export default function BookingModal(data) {
     };
     fetchUploadHandler();
   };
-
   // Mettre a jour dataUpdates
   useEffect(() => {
     setDataUpdate(data);
