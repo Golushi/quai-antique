@@ -21,7 +21,7 @@ export default function AdminBoard() {
           <div className="bg-gray-200 col-span-1 h-screen">
             <div className="flex justify-center items-center py-3 shadow-lg">
               <NavLink
-                to="/quai-antique"
+                to="/"
                 className={(nav) => (nav.isActive ? "nav-active" : "")}
               >
                 <button
