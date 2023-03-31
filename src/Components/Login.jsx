@@ -14,6 +14,7 @@ export default function Login() {
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  console.log(data);
 
   const [error, setError] = useState();
   if (error) {
