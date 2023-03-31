@@ -94,7 +94,6 @@ export default function FicheUser({ data }) {
   useEffect(() => {
     if (isLoggedIn) {
       fetchHandler();
-      window.location.reload();
     }
   }, [fetchHandler, isLoggedIn]);
 
