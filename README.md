@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-Le site du restaurant est disponible en ligne ici : [Quai Antique](https://golushi.github.io/quai-antique/).
+Le site du restaurant est disponible en ligne ici : [Quai Antique](https://quai-antique-chambery.netlify.app/).
 
 Installation
 
