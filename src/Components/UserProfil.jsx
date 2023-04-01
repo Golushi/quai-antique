@@ -100,6 +100,8 @@ export default function UserProfil({ data }) {
       }
     };
     fetchUploadHandler();
+    // Retour au bouton modifier
+    setModification(false);
   };
 
   // Requete GET
@@ -177,7 +179,7 @@ export default function UserProfil({ data }) {
                       )}
                       {modification && (
                         <input
-                          onChange={changeHandler}
+                          //onChange={changeHandler}
                           ref={nomInputRef}
                           type="text"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -199,7 +201,7 @@ export default function UserProfil({ data }) {
                       )}
                       {modification && (
                         <select
-                          onChange={changeHandler}
+                          //onChange={changeHandler}
                           ref={couvertsInputRef}
                           id="couverts"
                           defaultValue={couverts}
@@ -231,9 +233,9 @@ export default function UserProfil({ data }) {
                         )}
                         {modification && (
                           <input
-                            onChange={changeHandler}
+                            //onChange={changeHandler}
                             ref={fruitsCoquesInputRef}
-                            checked={fruitsCoques === 1}
+                            defaultChecked={fruitsCoques === 1}
                             type="checkbox"
                             id="fruitsCoques"
                           />
@@ -251,9 +253,9 @@ export default function UserProfil({ data }) {
                         )}
                         {modification && (
                           <input
-                            onChange={changeHandler}
+                            //onChange={changeHandler}
                             ref={arachideInputRef}
-                            checked={arachide === 1}
+                            defaultChecked={arachide === 1}
                             type="checkbox"
                             id="arachide"
                           />
@@ -271,9 +273,9 @@ export default function UserProfil({ data }) {
                         )}
                         {modification && (
                           <input
-                            onChange={changeHandler}
+                            //onChange={changeHandler}
                             ref={oeufInputRef}
-                            checked={oeuf === 1}
+                            defaultChecked={oeuf === 1}
                             type="checkbox"
                             id="oeuf"
                           />
@@ -291,9 +293,9 @@ export default function UserProfil({ data }) {
                         )}
                         {modification && (
                           <input
-                            onChange={changeHandler}
+                            //onChange={changeHandler}
                             ref={laitInputRef}
-                            checked={lait === 1}
+                            defaultChecked={lait === 1}
                             type="checkbox"
                             id="lait"
                           />
@@ -305,7 +307,7 @@ export default function UserProfil({ data }) {
                         {!modification && <p>{autre}</p>}
                         {modification && (
                           <input
-                            onChange={changeHandler}
+                            //onChange={changeHandler}
                             ref={autreInputRef}
                             className="mx-2"
                             type="text"
@@ -326,7 +328,9 @@ export default function UserProfil({ data }) {
                       <button
                         className="text-white bg-myyellow active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                         type={"submit"}
-                        onClick={modificationHandler}
+                        onClick={
+                          modification ? changeHandler : modificationHandler
+                        }
                       >
                         {!modification ? "Modifier" : "Envoyer"}
                       </button>
