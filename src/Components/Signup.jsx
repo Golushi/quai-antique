@@ -199,13 +199,15 @@ export default function Signup() {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="password2"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Mot de passe{" "}
+                      <div className="flex justify-between">
+                        <label
+                          htmlFor="password2"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Mot de passe{" "}
+                        </label>
                         <span
-                          className="cursor-pointer"
+                          className="cursor-pointer animate-bounce text-myblue"
                           onClick={() =>
                             alert(
                               "Le mot de passe doit comporter au moins 8 caractères, une majuscule et un chiffre."
@@ -214,7 +216,7 @@ export default function Signup() {
                         >
                           ?
                         </span>
-                      </label>
+                      </div>
                       <div className="relative">
                         <input
                           type={showPassword ? "text" : "password"}
