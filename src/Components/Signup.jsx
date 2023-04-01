@@ -4,6 +4,7 @@ import Spinner from "./UI/Spinner";
 
 export default function Signup() {
   const [showModal, setShowModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -202,18 +203,38 @@ export default function Signup() {
                         htmlFor="password2"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
-                        Mot de passe
+                        Mot de passe{" "}
+                        <span
+                          className="cursor-pointer"
+                          onClick={() =>
+                            alert(
+                              "Le mot de passe doit comporter au moins 8 caractères, une majuscule et un chiffre."
+                            )
+                          }
+                        >
+                          ?
+                        </span>
                       </label>
-                      <input
-                        type="password"
-                        name="passwordSignup"
-                        id="passwordSignup"
-                        ref={passwordInputRef}
-                        placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        required
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          name="passwordSignup"
+                          id="passwordSignup"
+                          ref={passwordInputRef}
+                          placeholder="••••••••"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                          required
+                        />
+                        <button
+                          type="button"
+                          className="absolute inset-y-0 right-0 px-3 py-2 text-sm text-gray-500 focus:outline-none"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? "Masquer" : "Afficher"}
+                        </button>
+                      </div>
                     </div>
+
                     <div>
                       <label
                         htmlFor="couvert"
