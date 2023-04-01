@@ -8,6 +8,7 @@ export default function Login() {
   const [showModal, setShowModal] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const [showPassword, setShowPassword] = useState(false);
 
   // Utilisation context
   const authCtx = useContext(AuthContext);
@@ -174,15 +175,24 @@ export default function Login() {
                       >
                         Mot de passe
                       </label>
-                      <input
-                        type="password"
-                        name="passwordLogin"
-                        id="passwordLogin"
-                        ref={passwordInputRef}
-                        placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        required
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          name="passwordLogin"
+                          id="passwordLogin"
+                          ref={passwordInputRef}
+                          placeholder="••••••••"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                          required
+                        />
+                        <button
+                          type="button"
+                          className="absolute inset-y-0 right-0 px-3 py-2 text-sm text-gray-500 focus:outline-none"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? "Masquer" : "Afficher"}
+                        </button>
+                      </div>
                     </div>
 
                     <button

@@ -40,13 +40,11 @@ export default function BookingModal(data) {
     const enteredHeureReservation = heureReservationInputRef.current.value;
     const enteredNom = isLoggedIn ? nom : nomInputRef.current.value;
     const enteredCouverts = couvertsInputRef.current.value;
-    const enteredArachide = arachideInputRef.current.defaultChecked ? 1 : 0;
+    const enteredArachide = arachideInputRef.current.checked ? 1 : 0;
+    const enteredFruitsCoques = fruitsCoquesInputRef.current.checked ? 1 : 0;
+    const enteredLait = laitInputRef.current.checked ? 1 : 0;
+    const enteredOeuf = oeufInputRef.current.checked ? 1 : 0;
     const enteredAutre = autreInputRef.current.value;
-    const enteredFruitsCoques = fruitsCoquesInputRef.current.defaultChecked
-      ? 1
-      : 0;
-    const enteredLait = laitInputRef.current.defaultChecked ? 1 : 0;
-    const enteredOeuf = oeufInputRef.current.defaultChecked ? 1 : 0;
 
     setDataUpdate({
       ...dataUpdate,
@@ -203,7 +201,6 @@ export default function BookingModal(data) {
                       type="date"
                       name="field1"
                       ref={dateReservationInputRef}
-                      // onChange={changeHandler}
                       id="field1"
                       placeholder=""
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
