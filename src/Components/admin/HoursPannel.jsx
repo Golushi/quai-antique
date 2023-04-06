@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 
 export default function HoursPanel() {
+  const [lunchStart, setLunchStart] = useState();
+
+  // const lunchStartModif = JSON.stringify(lunchStart);
+  console.log(lunchStart);
+
   const [hours, setHours] = useState([
     {
       jour: "Monday",
       heures: [
-        { plage: "midi", debut: "12:00", fin: "14:30" },
+        {
+          plage: "midi",
+          debut: "12:00",
+          fin: "14:30",
+        },
         { plage: "soir", debut: "19:00", fin: "23:00" },
       ],
     },
@@ -55,24 +64,24 @@ export default function HoursPanel() {
 
   useEffect(() => {
     const fetchHours = async () => {
-      // add async keyword
-      try {
-        const response = await fetch(
-          // add await keyword
-          `${process.env.REACT_APP_API_URL}/api/admin/opening_hours/?day=Monday`
-        );
-        console.log(response);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json(); // add await here
-        setHours(data.results); // update state with the fetched data
-      } catch (error) {
-        console.error(error);
-      }
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(
+        "https://server-production-4d7c.up.railway.app/api/admin/opening_hours/?day=Monday",
+        requestOptions
+      )
+        .then((response) => response.text())
+        .then((result) => {
+          const data = JSON.parse(result);
+          setLunchStart(data.results[0].lunch_start.slice(0, -3));
+        })
+        .catch((error) => console.log("error", error));
     };
     fetchHours();
-  }, []); // run once on mount
+  }, []);
 
   useEffect(() => {
     const updatedHours = JSON.parse(localStorage.getItem("hours"));

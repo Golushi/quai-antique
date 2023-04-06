@@ -1,6 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Map from "./Map";
 export default function OpeningHours() {
+  const [mondayLunchStart, setMondayLunchStart] = useState();
+  const [MondayLunchEnd, setMondayLunchEnd] = useState();
+  const [mondayDinnerStart, setMondayDinnerStart] = useState();
+  const [MondayDinnerEnd, setMondayDinnerEnd] = useState();
+  const [tuesdayLunchStart, setTuesdayLunchStart] = useState();
+  const [tuesdayLunchEnd, setTuesdayLunchEnd] = useState();
+  const [tuesdayDinnerStart, setTuesdayDinnerStart] = useState();
+  const [tuesdayDinnerEnd, setTuesdayDinnerEnd] = useState();
+
+  useEffect(() => {
+    const fetchHours = async (day) => {
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(
+        `https://server-production-4d7c.up.railway.app/api/admin/opening_hours/?day=${day}`,
+        requestOptions
+      )
+        .then((response) => response.text())
+        .then((result) => {
+          const data = JSON.parse(result);
+          switch (day) {
+            case "Monday":
+              setMondayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setMondayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setMondayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setMondayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            case "Tuesday":
+              setTuesdayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setTuesdayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setTuesdayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setTuesdayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            // Ajoutez les cas pour chaque jour de la semaine ici
+            default:
+              break;
+          }
+        })
+        .catch((error) => console.log("error", error));
+    };
+
+    fetchHours("Monday");
+    fetchHours("Tuesday");
+    // Appeler fetchHours pour chaque jour de la semaine ici
+  }, []);
+
   return (
     <section id="horaires">
       <div className="grid xl:grid-cols-2 justify-items-center items-center">
@@ -37,14 +86,14 @@ export default function OpeningHours() {
 
             <div className="grid justify-items-end text-sm my-2">
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-14:30
+                Midi {mondayLunchStart}-{MondayLunchEnd}
                 <br />
-                Soir 19:00-23:00
+                Soir {mondayDinnerStart}-{MondayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-14:30
+                Midi {tuesdayLunchStart}-{tuesdayLunchEnd}
                 <br />
-                Soir 19:00-23:00
+                Soir {tuesdayDinnerStart}-{tuesdayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
                 Midi 12:00-14:30
