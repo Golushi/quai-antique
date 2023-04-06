@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function HoursPanel() {
-  const [lunchStart, setLunchStart] = useState();
-
-  // const lunchStartModif = JSON.stringify(lunchStart);
-  console.log(lunchStart);
+  //const [lunchStart, setLunchStart] = useState();
 
   const [hours, setHours] = useState([
     {
@@ -62,26 +59,26 @@ export default function HoursPanel() {
     },
   ]);
 
-  useEffect(() => {
-    const fetchHours = async () => {
-      const requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
+  // useEffect(() => {
+  //   const fetchHours = async () => {
+  //     const requestOptions = {
+  //       method: "GET",
+  //       redirect: "follow",
+  //     };
 
-      fetch(
-        "https://server-production-4d7c.up.railway.app/api/admin/opening_hours/?day=Monday",
-        requestOptions
-      )
-        .then((response) => response.text())
-        .then((result) => {
-          const data = JSON.parse(result);
-          setLunchStart(data.results[0].lunch_start.slice(0, -3));
-        })
-        .catch((error) => console.log("error", error));
-    };
-    fetchHours();
-  }, []);
+  //     fetch(
+  //       "https://server-production-4d7c.up.railway.app/api/admin/opening_hours/?day=Monday",
+  //       requestOptions
+  //     )
+  //       .then((response) => response.text())
+  //       .then((result) => {
+  //         const data = JSON.parse(result);
+  //         setLunchStart(data.results[0].lunch_start.slice(0, -3));
+  //       })
+  //       .catch((error) => console.log("error", error));
+  //   };
+  //   fetchHours();
+  // }, []);
 
   useEffect(() => {
     const updatedHours = JSON.parse(localStorage.getItem("hours"));
@@ -133,7 +130,7 @@ export default function HoursPanel() {
       );
       return;
     }
-
+    alert("Horaires mis à jour pour " + updatedDay.jour);
     console.log("Horaires mis à jour pour " + updatedDay.jour);
     console.log(requestOptions.body);
   };
