@@ -54,10 +54,32 @@ export default function HoursPanel() {
   ]);
 
   useEffect(() => {
+    const fetchHours = async () => {
+      // add async keyword
+      try {
+        const response = await fetch(
+          // add await keyword
+          `${process.env.REACT_APP_API_URL}/api/admin/opening_hours/?day=Monday`
+        );
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json(); // add await here
+        setHours(data.results); // update state with the fetched data
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchHours();
+  }, []); // run once on mount
+
+  useEffect(() => {
     const updatedHours = JSON.parse(localStorage.getItem("hours"));
     if (updatedHours) {
       setHours(updatedHours);
     }
+    //console.log(updatedHours[0].heures[0].debut);
   }, []);
 
   const handleHoursChange = (dayIndex, timeIndex, field, value) => {
