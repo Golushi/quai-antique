@@ -2,13 +2,39 @@ import React, { useEffect, useState } from "react";
 import Map from "./Map";
 export default function OpeningHours() {
   const [mondayLunchStart, setMondayLunchStart] = useState();
-  const [MondayLunchEnd, setMondayLunchEnd] = useState();
+  const [mondayLunchEnd, setMondayLunchEnd] = useState();
   const [mondayDinnerStart, setMondayDinnerStart] = useState();
-  const [MondayDinnerEnd, setMondayDinnerEnd] = useState();
+  const [mondayDinnerEnd, setMondayDinnerEnd] = useState();
+
   const [tuesdayLunchStart, setTuesdayLunchStart] = useState();
   const [tuesdayLunchEnd, setTuesdayLunchEnd] = useState();
   const [tuesdayDinnerStart, setTuesdayDinnerStart] = useState();
   const [tuesdayDinnerEnd, setTuesdayDinnerEnd] = useState();
+
+  const [wednesdayLunchStart, setWednesdayLunchStart] = useState();
+  const [wednesdayLunchEnd, setWednesdayLunchEnd] = useState();
+  const [wednesdayDinnerStart, setWednesdayDinnerStart] = useState();
+  const [wednesdayDinnerEnd, setWednesdayDinnerEnd] = useState();
+
+  const [thursdayLunchStart, setThursdayLunchStart] = useState();
+  const [thursdayLunchEnd, setThursdayLunchEnd] = useState();
+  const [thursdayDinnerStart, setThursdayDinnerStart] = useState();
+  const [thursdayDinnerEnd, setThursdayDinnerEnd] = useState();
+
+  const [fridayLunchStart, setFridayLunchStart] = useState();
+  const [fridayLunchEnd, setFridayLunchEnd] = useState();
+  const [fridayDinnerStart, setFridayDinnerStart] = useState();
+  const [fridayDinnerEnd, setFridayDinnerEnd] = useState();
+
+  const [saturdayLunchStart, setSaturdayLunchStart] = useState();
+  const [saturdayLunchEnd, setSaturdayLunchEnd] = useState();
+  const [saturdayDinnerStart, setSaturdayDinnerStart] = useState();
+  const [saturdayDinnerEnd, setSaturdayDinnerEnd] = useState();
+
+  const [sundayLunchStart, setSundayLunchStart] = useState();
+  const [sundayLunchEnd, setSundayLunchEnd] = useState();
+  const [sundayDinnerStart, setSundayDinnerStart] = useState();
+  const [sundayDinnerEnd, setSundayDinnerEnd] = useState();
 
   useEffect(() => {
     const fetchHours = async (day) => {
@@ -37,7 +63,38 @@ export default function OpeningHours() {
               setTuesdayDinnerStart(data.results[0].dinner_start.slice(0, -3));
               setTuesdayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
               break;
-            // Ajoutez les cas pour chaque jour de la semaine ici
+            case "Wednesday":
+              setWednesdayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setWednesdayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setWednesdayDinnerStart(
+                data.results[0].dinner_start.slice(0, -3)
+              );
+              setWednesdayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            case "Thursday":
+              setThursdayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setThursdayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setThursdayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setThursdayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            case "Friday":
+              setFridayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setFridayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setFridayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setFridayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            case "Saturday":
+              setSaturdayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setSaturdayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setSaturdayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setSaturdayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
+            case "Sunday":
+              setSundayLunchStart(data.results[0].lunch_start.slice(0, -3));
+              setSundayLunchEnd(data.results[0].lunch_end.slice(0, -3));
+              setSundayDinnerStart(data.results[0].dinner_start.slice(0, -3));
+              setSundayDinnerEnd(data.results[0].dinner_end.slice(0, -3));
+              break;
             default:
               break;
           }
@@ -47,6 +104,11 @@ export default function OpeningHours() {
 
     fetchHours("Monday");
     fetchHours("Tuesday");
+    fetchHours("Wednesday");
+    fetchHours("Thursday");
+    fetchHours("Friday");
+    fetchHours("Saturday");
+    fetchHours("Sunday");
     // Appeler fetchHours pour chaque jour de la semaine ici
   }, []);
 
@@ -86,9 +148,9 @@ export default function OpeningHours() {
 
             <div className="grid justify-items-end text-sm my-2">
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi {mondayLunchStart}-{MondayLunchEnd}
+                Midi {mondayLunchStart}-{mondayLunchEnd}
                 <br />
-                Soir {mondayDinnerStart}-{MondayDinnerEnd}
+                Soir {mondayDinnerStart}-{mondayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
                 Midi {tuesdayLunchStart}-{tuesdayLunchEnd}
@@ -96,29 +158,29 @@ export default function OpeningHours() {
                 Soir {tuesdayDinnerStart}-{tuesdayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-14:30
+                Midi {wednesdayLunchStart}-{wednesdayLunchEnd}
                 <br />
-                Soir 19:00-23:00
+                Soir {wednesdayDinnerStart}-{wednesdayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-14:30
+                Midi {thursdayLunchStart}-{thursdayLunchEnd}
                 <br />
-                Soir 19:00-23:00
+                Soir {thursdayDinnerStart}-{thursdayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-14:30
+                Midi {fridayLunchStart}-{fridayLunchEnd}
                 <br />
-                Soir 19:00-00:00
+                Soir {fridayDinnerStart}-{fridayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-15:00
+                Midi {saturdayLunchStart}-{saturdayLunchEnd}
                 <br />
-                Soir 19:00-00:00
+                Soir {saturdayDinnerStart}-{saturdayDinnerEnd}
               </p>
               <p className="text-myyellow h-20 items-center transform duration-500 hover:scale-125 flex my-2">
-                Midi 12:00-15:00
+                Midi {sundayLunchStart}-{sundayLunchEnd}
                 <br />
-                Soir 19:00-00:00
+                Soir {sundayDinnerStart}-{sundayDinnerEnd}
               </p>
             </div>
           </div>
