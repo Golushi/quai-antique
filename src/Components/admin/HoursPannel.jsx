@@ -59,27 +59,6 @@ export default function HoursPanel() {
     },
   ]);
 
-  // useEffect(() => {
-  //   const fetchHours = async () => {
-  //     const requestOptions = {
-  //       method: "GET",
-  //       redirect: "follow",
-  //     };
-
-  //     fetch(
-  //       "https://server-production-4d7c.up.railway.app/api/admin/opening_hours/?day=Monday",
-  //       requestOptions
-  //     )
-  //       .then((response) => response.text())
-  //       .then((result) => {
-  //         const data = JSON.parse(result);
-  //         setLunchStart(data.results[0].lunch_start.slice(0, -3));
-  //       })
-  //       .catch((error) => console.log("error", error));
-  //   };
-  //   fetchHours();
-  // }, []);
-
   useEffect(() => {
     const updatedHours = JSON.parse(localStorage.getItem("hours"));
     if (updatedHours) {
@@ -189,7 +168,7 @@ export default function HoursPanel() {
                 </table>
                 <button
                   type={"submit"}
-                  className="bg-myblue text-white rounded-lg px-4 py-2 mt-4"
+                  className="bg-myblue hover:bg-myyellow text-white rounded-lg px-4 py-2 mt-4"
                   onClick={() => handleUpdate(dayIndex)}
                 >
                   Mettre à jour
