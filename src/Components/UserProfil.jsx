@@ -293,7 +293,6 @@ export default function UserProfil({ data }) {
                         )}
                         {modification && (
                           <input
-                            //onChange={changeHandler}
                             ref={laitInputRef}
                             defaultChecked={lait === 1}
                             type="checkbox"
