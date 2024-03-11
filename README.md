@@ -2,6 +2,8 @@
 
 Le site du restaurant est disponible en ligne ici : [Quai Antique](https://quai-antique-chambery.netlify.app/).
 
+Présentation orale disponible dans le dossier Docs
+
 La BDD sur railway n'est pas disponible car pas d'abonnement actuellement, 
 
 une démonstration est disponible en vidéo :
