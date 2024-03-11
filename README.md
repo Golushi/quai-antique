@@ -2,6 +2,11 @@
 
 Le site du restaurant est disponible en ligne ici : [Quai Antique](https://quai-antique-chambery.netlify.app/).
 
+La BDD sur railway n'est pas disponible car pas d'abonnement actuellement, 
+
+une démonstration est disponible en vidéo :
+https://www.youtube.com/watch?v=-_01Gcw0iFU
+
 Installation
 
     Clonez le projet depuis GitHub : git clone https://github.com/Golushi/quai-antique
